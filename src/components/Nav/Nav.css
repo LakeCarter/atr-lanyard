@@ -1,0 +1,16 @@
+.nav{
+    display:flex;
+    border: 1px dotted black;
+    align-items: center;
+}
+.nav-logo{
+margin: 10px;
+}
+.nav-LogoImg{
+    max-width: 75px;
+}
+
+.nav-link{
+    text-decoration: none;
+}
+
