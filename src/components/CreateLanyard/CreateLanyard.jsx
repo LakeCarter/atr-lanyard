@@ -7,12 +7,12 @@ import {
 } from "../../services/optionsService.js"
 import { saveNewLanyard } from "../../services/lanyardService.js"
 
-export const CreateLanyard = () => {
+export const CreateLanyard = ({currentUser}) => {
   const [braidStyles, setBraidStyles] = useState([])
   const [allNumberOfDrops, setAllNumberOfDrops] = useState([])
   const [neckStyles, setNeckStyles] = useState([])
   const [newLanyard, setNewLanyard] = useState({
-    creatorId: 0,
+    creatorId: currentUser.id,
     dateCreated: "",
     braidStyleId: 0,
     numberOfDropsId: 0,
@@ -26,7 +26,7 @@ export const CreateLanyard = () => {
     bridgeBraidColor2: 0,
     sideDropColor: 0,
     sideDropColor: 0,
-    lanyardName: "",
+    name: "",
   })
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export const CreateLanyard = () => {
           <input
             type="text"
             className="name-input"
-            name="lanyardName"
+            name="name"
             placeholder="Lanyard Name"
             onChange={(event) => {
               handleSelection(event)

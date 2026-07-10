@@ -1,0 +1,90 @@
+import { useEffect, useState } from "react"
+import {
+  getBraidStyles,
+  getNeckStyles,
+  getNumberOfBraidsOptions,
+} from "../../services/optionsService.js"
+
+export const FilterBar = ({allLanyards, setFilteredResults}) => {
+  const [allBraidStyles, setAllBraidStyles] = useState([])
+  const [allDrops, setAllDrops] = useState([])
+  const [allNeckStyles, setAllNeckStyles] = useState([])
+
+  useEffect(() => {
+    getBraidStyles().then((braidArray) => {
+      setAllBraidStyles(braidArray)
+    })
+    getNumberOfBraidsOptions().then((dropsArray) => {
+      setAllDrops(dropsArray)
+    })
+    getNeckStyles().then((neckArray) => {
+      setAllNeckStyles(neckArray)
+    })
+  }, [])
+
+  const handleFilterSelect = (event) =>{
+    if(event.target.value != 0){
+    const filteredResults = allLanyards.filter((lanyard)=>{
+        if(lanyard[event.target.name] === event.target.value){
+            return lanyard
+        }
+    })
+setFilteredResults(filteredResults)
+}
+else setFilteredResults(allLanyards)
+console.log(event.target.value)
+  }
+
+  return (
+    <div className="filter-bar">
+      <button className="filter-toggle">Filter</button>
+      {/* Filter by braid style */}
+      <div className="filter-group">
+        <label className="filter-label"> Braid Style
+          <select className="filter-item" name="braidStyleId" onChange={(event)=>{handleFilterSelect(event)}}>
+            <option value={0}>-Select-</option>
+            {allBraidStyles.map((braidStyle) => {
+              return (
+                <option key={braidStyle.id} value={braidStyle.id}>
+                  {braidStyle.name}
+                </option>
+              )
+            })}
+          </select>
+        </label>
+      </div>
+
+      {/* Filter by number of drops */}
+      <div className="filter-group">
+        <label className="filter-label"> Number of drops
+          <select className="filter-item" name="numberOfDropsId" onChange={(event)=>{handleFilterSelect(event)}}>
+            <option value={0}>-Select-</option>
+            {allDrops.map((drop) => {
+              return (
+                <option key={drop.id} value={drop.number}>
+                  {drop.number}
+                </option>
+              )
+            })}
+          </select>
+        </label>
+      </div>
+
+      {/* Filter by Neck Style */}
+      <div className="filter-group">
+        <label className="filter-label"> Neck Style
+          <select className="filter-item" name="neckStyleId" onChange={(event)=>{handleFilterSelect(event)}}>
+            <option value={0}>-Select-</option>
+            {allNeckStyles.map((neckStyle) => {
+              return (
+                <option key={neckStyle.id} value={neckStyle.id}>
+                  {neckStyle.name}
+                </option>
+              )
+            })}
+          </select>
+        </label>
+      </div>
+    </div>
+  )
+}

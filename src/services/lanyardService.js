@@ -7,3 +7,7 @@ export const saveNewLanyard = (newLanyard) =>{
         body: JSON.stringify(newLanyard)
     }).then(res => res.json())
 }
+
+export const getAllLanyards = () =>{
+    return fetch("http://localhost:8088/lanyard").then(res => res.json())
+}
