@@ -12,7 +12,8 @@ export const CreateLanyard = ({currentUser}) => {
   const [allNumberOfDrops, setAllNumberOfDrops] = useState([])
   const [neckStyles, setNeckStyles] = useState([])
   const [newLanyard, setNewLanyard] = useState({
-    creatorId: currentUser.id,
+    id:0,
+    userId: currentUser.id,
     dateCreated: "",
     braidStyleId: 0,
     numberOfDropsId: 0,
@@ -43,7 +44,15 @@ export const CreateLanyard = ({currentUser}) => {
 
   const handleSelection = (event) => {
     const stateClone = { ...newLanyard }
-    stateClone[event.target.name] = event.target.value
+    // Set todays date
+    const d = new Date()
+    const todaysDate = d.toLocaleDateString()
+    stateClone.dateCreated = todaysDate
+
+    //Set key value based on the name of the target event
+    if(parseInt(event.target.value))
+    stateClone[event.target.name] = parseInt(event.target.value)
+    else(stateClone[event.target.name] = event.target.value)
     setNewLanyard(stateClone)
   }
 

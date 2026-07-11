@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom"
 import "./Nav.css"
+import logo from "../../assets/atrLogo.png"
+
 export const Nav = () => {
   return <>
     <div className="nav">
         <div className="nav-logo">
           {/* Logo */}
           <Link className="nav-link" to={"/"}>
-            <img src="src\assets\atrLogo.png" className="nav-LogoImg"/>
+            <img src={logo} className="nav-LogoImg"/>
             </Link>
         </div>
       <ul>

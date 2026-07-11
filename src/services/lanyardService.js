@@ -11,3 +11,7 @@ export const saveNewLanyard = (newLanyard) =>{
 export const getAllLanyards = () =>{
     return fetch("http://localhost:8088/lanyard").then(res => res.json())
 }
+
+export const getLanyardsById = (id) =>{
+    return fetch(`http://localhost:8088/lanyard?id=${id}&_expand=user`).then(res => res.json())
+}

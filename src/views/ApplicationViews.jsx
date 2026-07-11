@@ -4,6 +4,7 @@ import { Nav } from "../components/Nav/Nav.jsx"
 import { CreateLanyard } from "../components/CreateLanyard/CreateLanyard.jsx"
 import { useEffect, useState } from "react"
 import { ViewAll } from "../components/ViewAll/ViewAll.jsx"
+import { LanyardView } from "../components/LanyardView/LanyardView.jsx"
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -34,6 +35,7 @@ export const ApplicationViews = () => {
           />
 
           <Route path="view-all" element={<ViewAll />} />
+          <Route path="lanyard/:lanyardId" element={<LanyardView currentUser={currentUser}/>} />
         </Route>
       </Routes>
     </>

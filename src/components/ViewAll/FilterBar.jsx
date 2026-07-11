@@ -5,10 +5,11 @@ import {
   getNumberOfBraidsOptions,
 } from "../../services/optionsService.js"
 
-export const FilterBar = ({allLanyards, setFilteredResults}) => {
+export const FilterBar = ({searchedResults, setFilteredResults}) => {
   const [allBraidStyles, setAllBraidStyles] = useState([])
   const [allDrops, setAllDrops] = useState([])
   const [allNeckStyles, setAllNeckStyles] = useState([])
+  const [filterValues, setFilterValues] = useState({})
 
   useEffect(() => {
     getBraidStyles().then((braidArray) => {
@@ -22,17 +23,30 @@ export const FilterBar = ({allLanyards, setFilteredResults}) => {
     })
   }, [])
 
+  //Function to return an bool if the base obj has the keys of the filter and those keys' value matches
+  const objFilter =(base,filter)=>{
+    return Object.keys(filter).every(
+      (key) => base.hasOwnProperty(key) && base[key]===filter[key]
+    )
+  }
+
+  useEffect(()=>{
+    const foundResults = searchedResults.filter((lanyard)=>{
+      if(objFilter(lanyard,filterValues)){
+        console.log(objFilter(lanyard,filterValues))
+        return lanyard
+      }
+    }
+  )
+  setFilteredResults(foundResults)
+  },[filterValues])
+
   const handleFilterSelect = (event) =>{
+    const filterCopy = {...filterValues}
     if(event.target.value != 0){
-    const filteredResults = allLanyards.filter((lanyard)=>{
-        if(lanyard[event.target.name] === event.target.value){
-            return lanyard
-        }
-    })
-setFilteredResults(filteredResults)
-}
-else setFilteredResults(allLanyards)
-console.log(event.target.value)
+    filterCopy[event.target.name] = parseInt(event.target.value)}
+    else (delete filterCopy[event.target.name])
+    setFilterValues(filterCopy)
   }
 
   return (
