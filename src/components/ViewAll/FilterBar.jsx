@@ -5,7 +5,7 @@ import {
   getNumberOfBraidsOptions,
 } from "../../services/optionsService.js"
 
-export const FilterBar = ({searchedResults, setFilteredResults}) => {
+export const FilterBar = ({ searchedResults, setFilteredResults }) => {
   const [allBraidStyles, setAllBraidStyles] = useState([])
   const [allDrops, setAllDrops] = useState([])
   const [allNeckStyles, setAllNeckStyles] = useState([])
@@ -24,28 +24,26 @@ export const FilterBar = ({searchedResults, setFilteredResults}) => {
   }, [])
 
   //Function to return an bool if the base obj has the keys of the filter and those keys' value matches
-  const objFilter =(base,filter)=>{
+  const objFilter = (base, filter) => {
     return Object.keys(filter).every(
-      (key) => base.hasOwnProperty(key) && base[key]===filter[key]
+      (key) => base.hasOwnProperty(key) && base[key] === filter[key],
     )
   }
 
-  useEffect(()=>{
-    const foundResults = searchedResults.filter((lanyard)=>{
-      if(objFilter(lanyard,filterValues)){
-        console.log(objFilter(lanyard,filterValues))
+  useEffect(() => {
+    const foundResults = searchedResults.filter((lanyard) => {
+      if (objFilter(lanyard, filterValues)) {
         return lanyard
       }
-    }
-  )
-  setFilteredResults(foundResults)
-  },[filterValues])
+    })
+    setFilteredResults(foundResults)
+  }, [filterValues])
 
-  const handleFilterSelect = (event) =>{
-    const filterCopy = {...filterValues}
-    if(event.target.value != 0){
-    filterCopy[event.target.name] = parseInt(event.target.value)}
-    else (delete filterCopy[event.target.name])
+  const handleFilterSelect = (event) => {
+    const filterCopy = { ...filterValues }
+    if (event.target.value != 0) {
+      filterCopy[event.target.name] = parseInt(event.target.value)
+    } else delete filterCopy[event.target.name]
     setFilterValues(filterCopy)
   }
 
@@ -54,8 +52,16 @@ export const FilterBar = ({searchedResults, setFilteredResults}) => {
       <button className="filter-toggle">Filter</button>
       {/* Filter by braid style */}
       <div className="filter-group">
-        <label className="filter-label"> Braid Style
-          <select className="filter-item" name="braidStyleId" onChange={(event)=>{handleFilterSelect(event)}}>
+        <label className="filter-label">
+          {" "}
+          Braid Style
+          <select
+            className="filter-item"
+            name="braidStyleId"
+            onChange={(event) => {
+              handleFilterSelect(event)
+            }}
+          >
             <option value={0}>-Select-</option>
             {allBraidStyles.map((braidStyle) => {
               return (
@@ -70,8 +76,16 @@ export const FilterBar = ({searchedResults, setFilteredResults}) => {
 
       {/* Filter by number of drops */}
       <div className="filter-group">
-        <label className="filter-label"> Number of drops
-          <select className="filter-item" name="numberOfDropsId" onChange={(event)=>{handleFilterSelect(event)}}>
+        <label className="filter-label">
+          {" "}
+          Number of drops
+          <select
+            className="filter-item"
+            name="numberOfDropsId"
+            onChange={(event) => {
+              handleFilterSelect(event)
+            }}
+          >
             <option value={0}>-Select-</option>
             {allDrops.map((drop) => {
               return (
@@ -86,8 +100,16 @@ export const FilterBar = ({searchedResults, setFilteredResults}) => {
 
       {/* Filter by Neck Style */}
       <div className="filter-group">
-        <label className="filter-label"> Neck Style
-          <select className="filter-item" name="neckStyleId" onChange={(event)=>{handleFilterSelect(event)}}>
+        <label className="filter-label">
+          {" "}
+          Neck Style
+          <select
+            className="filter-item"
+            name="neckStyleId"
+            onChange={(event) => {
+              handleFilterSelect(event)
+            }}
+          >
             <option value={0}>-Select-</option>
             {allNeckStyles.map((neckStyle) => {
               return (

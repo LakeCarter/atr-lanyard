@@ -14,3 +14,7 @@ margin: 10px;
     text-decoration: none;
 }
 
+.nav-profile-img{
+    max-width: 75px;
+    border-radius: 100%;
+}

@@ -1,15 +1,24 @@
 import "./LanyardView.css"
-import { useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import placeHolder from "../../assets/lanyardPlaceHolder.png"
 import { useEffect, useState } from "react"
-import { getLanyardsById } from "../../services/lanyardService.js"
-import { getLanyardLikes, postNewLike } from "../../services/likeService.js"
+import {
+  deleteLanyard,
+  getLanyardsById,
+} from "../../services/lanyardService.js"
+import {
+  getLanyardLikes,
+  postNewLike,
+  removeLike,
+} from "../../services/likeService.js"
 
 export const LanyardView = ({ currentUser }) => {
+  const navigate = useNavigate()
   const { lanyardId } = useParams()
   const [lanyard, setLanyard] = useState({})
   const [likes, setLikes] = useState([])
   const [alreadyLiked, setAlreadyLiked] = useState(false)
+  const [userLike, setUserLike] = useState({})
 
   //Function to rerender the page
   const getAndSetLanyard = () => {
@@ -19,7 +28,6 @@ export const LanyardView = ({ currentUser }) => {
     getLanyardLikes(lanyardId).then((likesArray) => {
       setLikes(likesArray)
     })
-    
   }
 
   //Initial render
@@ -29,23 +37,40 @@ export const LanyardView = ({ currentUser }) => {
 
   //Handle like
   const handleLike = () => {
-    const likeObj = {
-      id: 0,
-      userId: currentUser.id,
-      lanyardId: lanyard.id,
-    }
-    postNewLike(likeObj).then(getAndSetLanyard())
+    if (!alreadyLiked) {
+      const likeObj = {
+        id: 0,
+        userId: currentUser.id,
+        lanyardId: lanyard.id,
+      }
+      postNewLike(likeObj).then(getAndSetLanyard())
+    } else removeLike(userLike.id).then(getAndSetLanyard())
   }
 
   //check if current user has already liked the lanyard
-  useEffect(()=>{
-        for(const like of likes){
-            console.log(like.id)
-            if(like.userId === currentUser.id){
-                setAlreadyLiked(true)
-            }
-        }
-  },[likes])
+  useEffect(() => {
+    //checks if likes is empty.
+    // If not check if the user has like the post.
+    if (likes.length != 0) {
+      for (const like of likes) {
+        if (like.userId === currentUser.id) {
+          setAlreadyLiked(true)
+          setUserLike(like)
+          break
+        } else setAlreadyLiked(false)
+        setUserLike([])
+      }
+    }
+    // If empty set alreadyLike to false and set user like to empty array.
+    else {
+      setAlreadyLiked(false)
+      setUserLike([])
+    }
+  }, [likes])
+
+  const handleDelete = () => {
+    deleteLanyard(lanyardId).then(navigate(-1))
+  }
 
   return (
     <div className="view-container">
@@ -55,8 +80,11 @@ export const LanyardView = ({ currentUser }) => {
         <h2 className="lanyard-name">{lanyard.name}</h2>
       </div>
       <div className="details-container">
+        <Link to={`/profile/${lanyard.userId}`}>
         <div className="CreatedBy">Created By: {lanyard.user?.name}</div>
+        </Link>
         <div className="date">Created: {lanyard.dateCreated}</div>
+        {/* Like button */}
         <div className="like-container">
           {currentUser.id != lanyard.userId ? (
             <button className="like-btn" onClick={handleLike}>
@@ -68,6 +96,29 @@ export const LanyardView = ({ currentUser }) => {
           <div className="like-count">{likes.length}</div>
         </div>
       </div>
+      {/* Owner options */}
+      {currentUser.id != lanyard.userId ? (
+        ""
+      ) : (
+        <div className="owner-options">
+          <button
+            className="edit-btn"
+            onClick={() => {
+              navigate("edit")
+            }}
+          >
+            Edit
+          </button>
+          <button
+            className="delete-btn"
+            onClick={() => {
+              handleDelete()
+            }}
+          >
+            Delete
+          </button>
+        </div>
+      )}
     </div>
   )
 }

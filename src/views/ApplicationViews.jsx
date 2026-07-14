@@ -5,6 +5,9 @@ import { CreateLanyard } from "../components/CreateLanyard/CreateLanyard.jsx"
 import { useEffect, useState } from "react"
 import { ViewAll } from "../components/ViewAll/ViewAll.jsx"
 import { LanyardView } from "../components/LanyardView/LanyardView.jsx"
+import { EditLanyard } from "../components/LanyardView/EditLanyard.jsx"
+import { Profile } from "../components/Profile/Profile.jsx"
+import { EditProfile } from "../components/Profile/EditProfile.jsx"
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -22,7 +25,7 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-              <Nav />
+              <Nav currentUser={currentUser}/>
               <Outlet />
             </>
           }
@@ -36,6 +39,9 @@ export const ApplicationViews = () => {
 
           <Route path="view-all" element={<ViewAll />} />
           <Route path="lanyard/:lanyardId" element={<LanyardView currentUser={currentUser}/>} />
+          <Route path="lanyard/:lanyardId/edit" element={<EditLanyard currentUser={currentUser}/>} />
+          <Route path="profile/:userId" element={<Profile currentUser={currentUser}/>} />
+          <Route path="profile/:userId/edit" element={<EditProfile currentUser={currentUser}/>} />
         </Route>
       </Routes>
     </>
