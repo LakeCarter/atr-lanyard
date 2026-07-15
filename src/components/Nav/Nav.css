@@ -1,20 +1,62 @@
-.nav{
-    display:flex;
-    border: 1px dotted black;
-    align-items: center;
-}
-.nav-logo{
-margin: 10px;
-}
-.nav-LogoImg{
-    max-width: 75px;
+.nav {
+  display: flex;
+  border: 1px dotted black;
+  align-items: center;
+  background-color: transparent;
+  z-index: 30;
+  width: 100%;
+  position: fixed;
 }
 
-.nav-link{
-    text-decoration: none;
+.nav-list {
+  display: flex;
+  gap: 3rem;
 }
 
-.nav-profile-img{
-    max-width: 75px;
-    border-radius: 100%;
+.nav-logo {
+  margin: 10px;
+}
+.nav-LogoImg {
+  max-width: 75px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.nav-item {
+  font-size: 20px;
+}
+
+.nav-profile-menu {
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.nav-profile-img {
+  max-width: 75px;
+  border-radius: 100%;
+}
+
+.nav-profile-btn :hover {
+  box-shadow: rgba(0, 0, 0, 0.705) 2px 2px 5px;
+}
+
+.nav-profile-btn {
+  background-color: transparent;
+  border: none;
+}
+
+/* Drop down menu */
+.drop-menu {
+  position: absolute;
+  background-color: var(--col-0);
+  padding: 15px;
+  margin: 0;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease,
+    visibility 0.2s;
 }

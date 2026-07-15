@@ -2,20 +2,19 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 import { createUser, getUserByEmail } from "../../services/userService"
+import imgPlaceholder from "../../assets/profilePlaceHolder.png"
 
 export const Register = (props) => {
   const [user, setUser] = useState({
+    name: "",
+    bio: "",
+    profileImg: "",
     email: "",
-    fullName: "",
-    cohort: 0,
   })
   let navigate = useNavigate()
 
   const registerNewUser = () => {
-    const newUser = {
-      ...user,
-      cohort: parseInt(user.cohort),
-    }
+    const newUser = {...user}
 
     createUser(newUser).then((createdUser) => {
       if (createdUser.hasOwnProperty("id")) {
@@ -54,14 +53,15 @@ export const Register = (props) => {
   return (
     <main className="auth-container">
       <form className="auth-form" onSubmit={handleRegister}>
-        <h1 className="header">Learning Moments</h1>
+        {/* {user.profileImg? (<img className="auth-profileImg" src={user.profileImg}/>):(imgPlaceholder)} */}
+         <img className="auth-profileImg" src={user.profileImg? (user.profileImg):(imgPlaceholder)}/>
         <h2>Please Register</h2>
         <fieldset className="auth-fieldset">
           <div>
             <input
               onChange={updateUser}
               type="text"
-              id="fullName"
+              id="name"
               className="auth-form-input"
               placeholder="Enter your name"
               required
@@ -85,10 +85,22 @@ export const Register = (props) => {
           <div>
             <input
               onChange={updateUser}
-              type="number"
-              id="cohort"
+              type="text"
+              id="bio"
               className="auth-form-input"
-              placeholder="Cohort #"
+              placeholder="Enter a bio"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset className="auth-fieldset">
+          <div>
+            <input
+              onChange={updateUser}
+              type="text"
+              id="profileImg"
+              className="auth-form-input"
+              placeholder="Enter a url for a profile image"
               required
             />
           </div>

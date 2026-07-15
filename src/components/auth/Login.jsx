@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-// import "./Login.css"
 import { getUserByEmail } from "../../services/userService"
+import logo from "../../assets/atrLogo.png"
 
 export const Login = () => {
   const [email, set] = useState("")
@@ -32,7 +32,7 @@ export const Login = () => {
     <main className="auth-container">
       <section>
         <form className="auth-form" onSubmit={handleLogin}>
-          <h1 className="header">Learning Moments</h1>
+          <img className="login-logo" src={logo}/>
           <h2>Please sign in</h2>
           <fieldset className="auth-fieldset">
             <div>

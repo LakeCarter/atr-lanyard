@@ -19,3 +19,6 @@ export const removeLike = (likeId) =>{
     method:"Delete"
   }).then((res) => res.json())
 }
+
+export const getUsersLikedLanyards = (userId) =>{
+    return fetch(`http://localhost:8088/likes?userId=${userId}&_expand=lanyard`).then(res => res.json())}

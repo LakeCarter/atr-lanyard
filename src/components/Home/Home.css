@@ -5,6 +5,12 @@ gap: 50px;
 background-color:var(--col-0);
 }
 
+/* Nav  */
+.nav{
+    position: fixed;
+}
+
+
 .home{
     background-color: rgb(61, 102, 48);
     min-height: 700px;

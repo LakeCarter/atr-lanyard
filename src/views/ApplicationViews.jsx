@@ -8,6 +8,7 @@ import { LanyardView } from "../components/LanyardView/LanyardView.jsx"
 import { EditLanyard } from "../components/LanyardView/EditLanyard.jsx"
 import { Profile } from "../components/Profile/Profile.jsx"
 import { EditProfile } from "../components/Profile/EditProfile.jsx"
+import { Favorites } from "../components/Favorites/Favorites.jsx"
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -42,6 +43,7 @@ export const ApplicationViews = () => {
           <Route path="lanyard/:lanyardId/edit" element={<EditLanyard currentUser={currentUser}/>} />
           <Route path="profile/:userId" element={<Profile currentUser={currentUser}/>} />
           <Route path="profile/:userId/edit" element={<EditProfile currentUser={currentUser}/>} />
+          <Route path="favorites" element={<Favorites currentUser={currentUser}/>} />
         </Route>
       </Routes>
     </>

@@ -1,5 +1,5 @@
 export const saveNewLanyard = (newLanyard) =>{
-    return fetch("http://localhost:8088/lanyard",{
+    return fetch("http://localhost:8088/lanyards",{
         method:"POST",
         headers:{
             "content-type": "application/json"
@@ -9,15 +9,15 @@ export const saveNewLanyard = (newLanyard) =>{
 }
 
 export const getAllLanyards = () =>{
-    return fetch("http://localhost:8088/lanyard").then(res => res.json())
+    return fetch("http://localhost:8088/lanyards").then(res => res.json())
 }
 
 export const getLanyardsById = (id) =>{
-    return fetch(`http://localhost:8088/lanyard?id=${id}&_expand=user`).then(res => res.json())
+    return fetch(`http://localhost:8088/lanyards?id=${id}&_expand=user`).then(res => res.json())
 }
 
 export const saveEditedLanyard = (editedLanyard) => {
-    return fetch(`http://localhost:8088/lanyard/${editedLanyard.id}`,{
+    return fetch(`http://localhost:8088/lanyards/${editedLanyard.id}`,{
         method:"PUT",
         headers:{
             "content-type":"application/json"
@@ -28,10 +28,11 @@ export const saveEditedLanyard = (editedLanyard) => {
 }
 
 export const deleteLanyard = (lanyardId) =>{
-    return fetch(`http://localhost:8088/lanyard/${lanyardId}`,{
+    return fetch(`http://localhost:8088/lanyards/${lanyardId}`,{
         method:"Delete"
     }).then(res => res.json())
 }
 
 export const getLanyardsByUserId = (userId) =>{
-    return fetch(`http://localhost:8088/lanyard?userId=${userId}`).then(res => res.json())}
+    return fetch(`http://localhost:8088/lanyards?userId=${userId}`).then(res => res.json())}
+
