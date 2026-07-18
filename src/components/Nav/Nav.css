@@ -1,8 +1,8 @@
 .nav {
   display: flex;
-  border: 1px dotted black;
   align-items: center;
   background-color: transparent;
+  background-image:  linear-gradient(180deg, #000000c7, #00000073 45%, #0000);
   z-index: 30;
   width: 100%;
   position: fixed;
@@ -40,7 +40,7 @@
 }
 
 .nav-profile-btn :hover {
-  box-shadow: rgba(0, 0, 0, 0.705) 2px 2px 5px;
+  box-shadow: var(--shadow);
 }
 
 .nav-profile-btn {
@@ -52,11 +52,31 @@
 .drop-menu {
   position: absolute;
   background-color: var(--col-0);
-  padding: 15px;
+  padding: 5px;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
 
   transition:
     opacity 0.2s ease,
     transform 0.3s ease,
     visibility 0.2s;
+}
+
+.drop-link{
+  text-decoration: none;
+  color: var(--text-light);
+  padding: 6px;
+  transition: transform 0.3s ease;
+}
+
+.drop-item{
+  font-size: 17px;
+}
+
+.drop-link :hover{
+  transform: translateX(5px);
 }

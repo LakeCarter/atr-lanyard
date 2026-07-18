@@ -44,6 +44,7 @@ export const CreateLanyard = ({ currentUser }) => {
       sideDropColor: 0,
       mainDropColor: 0,
       name: "",
+      featured:false
     })
   }, [currentUser])
 

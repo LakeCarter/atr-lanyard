@@ -1,78 +1,95 @@
-.home-main{
-display: flex;
-flex-direction: column;
-gap: 50px;
-background-color:var(--col-0);
+.home-main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: var(--col-0);
 }
 
 /* Nav  */
-.nav{
-    position: fixed;
+.nav {
+  position: fixed;
 }
 
-
-.home{
-    background-color: rgb(61, 102, 48);
-    min-height: 700px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+.home {
+  min-height: 700px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
 
-.home-greeting{
-    margin: 100px;
-    font-size: 80px;
-    margin-right: auto;
-    color: var(--text-light)
+/* Background picture  */
+.imgContainer {
+  align-self: center;
+  position: fixed;
 }
 
-.home-create-container{
-    background-color: var(--col-0);
-    padding: 50px;
-    justify-self: center;
-    border-radius: 20px;
+.backgroundPic {
+  transform: translate3d(0px, -150.5px, 0px);
 }
 
-.home-create-link{
-text-decoration: none;
+.main-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.home-create-text{
-    color: var(--text-light)
+.home-greeting {
+  margin: 100px;
+  font-size: 80px;
+  margin-right: auto;
+  margin-top: 10rem;
+  color: var(--text-light);
+  text-shadow: rgba(0, 0, 0, 0.705) 2px 2px 2px;
 }
 
-.home-lower{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--col-0);
-    gap: 100px;
+.home-create-container {
+  background-color: var(--col-3);
+  padding: 70px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
 }
 
-.featured-container{
-    display: flex;
-    background-color: var(--col-3);
-    justify-content: center;
+.home-create-link {
+  text-decoration: none;
+  width: fit-content;
+  display: inline-flex;
+  margin-top: 200px;
+  margin-bottom: 75px;
 }
 
-.featured-label{
-    font-size: 45px;
-    color: var(--text-light);
+.home-create-text {
+  color: var(--text-light);
 }
 
-.home-quote{
-    background-color: var(--col-2);
-    padding: 70px;
-    text-align: center;
-    color: var(--text-light);
+.home-lower {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--col-0);
+  gap: 100px;
+  position: relative;
 }
 
-.home-footer{
-    display: flex;
-    justify-content: left;
-    gap: 100px;
-    margin-left: 100px;
+.featured-container {
+  display: flex;
+  background-color: var(--col-2);
+  justify-content: center;
 }
 
-.home-Logo{
-    max-width: 100px;
+.featured-label {
+  font-size: 45px;
+  color: var(--text-light);
+}
+
+.home-quote {
+  background-color: var(--col-2);
+  padding: 70px;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.home-Logo {
+  max-width: 100px;
 }

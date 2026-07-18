@@ -1,19 +1,70 @@
-.lanyard-img{
-    max-width: 200px;
+.viewAll {
+  padding-top: 120px;
+  background-color: var(--col-4);
+  min-height: 100vh;
 }
 
+.all-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.lanyard-link {
+  text-decoration: none;
+  color: black;
+}
+
+.lanyard-img {
+  max-width: 200px;
+}
+
+/* ___Filter Bar___ */
 .filterBar-container{
-    display: flex;
-    gap:100px
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border: 1px solid var(--col-1);
+    border-left: 0;
+    border-right: 0;
+    padding: 5px;
 }
 
-.all-container{
-    display: flex;
-    gap: 3rem;
-    justify-self: center;
+.filter-bar{
+    justify-self: left;
 }
 
-.lanyard-link{
-    text-decoration: none;
-    color: black;
+.filter-toggle {
+  font-size: large;
+  border-radius: 10px;
+}
+
+.filter-drop {
+    position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+
+  gap: 10px;
+  background-color: var(--col-1);
+  color: var(--text-light);
+  padding: 20px;
+  font-size: larger;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.2s;
+}
+
+/* ___Search Bar___ */
+.search-bar{
+    justify-self:center; 
+    
+}
+
+.search-input {
+    border-radius: 10px;
+    font-size:medium;
+    width: 300px;
 }

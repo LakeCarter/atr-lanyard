@@ -1,0 +1,20 @@
+.featured-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.featured-list{
+    display: flex;
+    gap: 50px;
+}
+
+.featured-label{
+    margin-left: 400px;
+    margin-right: auto;
+}
+
+.featured-name{
+    color: var(--text-light);
+}

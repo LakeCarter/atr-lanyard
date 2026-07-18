@@ -1,0 +1,15 @@
+.home-footer {
+position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 100px;
+  padding-left: 100px;
+  background-color: var(--col-0);
+  flex-grow: 0;
+  max-height: 300px;
+}
+
+.footer-contact{
+  color: var(--text-light);
+}

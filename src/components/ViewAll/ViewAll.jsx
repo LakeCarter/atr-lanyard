@@ -20,28 +20,39 @@ export const ViewAll = () => {
     setSearchedResults(allLanyards)
   }, [allLanyards])
 
-  useEffect(()=>{
+  useEffect(() => {
     setFilteredResults(searchedResults)
-  },[searchedResults])
+  }, [searchedResults])
 
   return (
-    <div className="ViewAll">
+    <div className="viewAll">
+      <header className="page-header">All Lanyards Created</header>
       <div className="filterBar-container">
-      <FilterBar searchedResults={searchedResults} setFilteredResults={setFilteredResults} />
-      <SearchBar allLanyards={allLanyards} setSearchedResults={setSearchedResults} />
+        <SearchBar
+          allLanyards={allLanyards}
+          setSearchedResults={setSearchedResults}
+        />
+        <FilterBar
+          searchedResults={searchedResults}
+          setFilteredResults={setFilteredResults}
+        />
       </div>
       <div className="all-container">
         {filteredResults.map((lanyard) => {
           return (
-            <Link className="lanyard-link" to={`/lanyard/${lanyard.id}`} key={lanyard.id}>
-            <div className="lanyard-card">
-              {/* image shown is just a place holder */}
-              <img
-                className="lanyard-img"
-                src="src\assets\lanyardPlaceHolder.png"
-              />
-              <div className="lanyard-name">{lanyard.name}</div>
-            </div>
+            <Link
+              className="lanyard-link"
+              to={`/lanyard/${lanyard.id}`}
+              key={lanyard.id}
+            >
+              <div className="lanyard-card">
+                {/* image shown is just a place holder */}
+                <img
+                  className="lanyard-img"
+                  src="src\assets\lanyardPlaceHolder.png"
+                />
+                <div className="lanyard-name">{lanyard.name}</div>
+              </div>
             </Link>
           )
         })}

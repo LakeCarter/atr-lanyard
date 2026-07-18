@@ -36,3 +36,5 @@ export const deleteLanyard = (lanyardId) =>{
 export const getLanyardsByUserId = (userId) =>{
     return fetch(`http://localhost:8088/lanyards?userId=${userId}`).then(res => res.json())}
 
+export const getFeatured = () =>{
+    return fetch(`http://localhost:8088/lanyards?featured=true`).then(res => res.json())}
