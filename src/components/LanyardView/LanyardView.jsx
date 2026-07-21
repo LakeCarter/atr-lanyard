@@ -69,7 +69,7 @@ export const LanyardView = ({ currentUser }) => {
   }, [likes])
 
   const handleDelete = () => {
-    deleteLanyard(lanyardId).then(navigate(-1))
+    deleteLanyard(lanyardId).then(navigate(`/profile/${currentUser.id}`))
   }
 
   return (
@@ -80,8 +80,8 @@ export const LanyardView = ({ currentUser }) => {
         <h2 className="lanyard-name">{lanyard.name}</h2>
       </div>
       <div className="details-container">
-        <Link to={`/profile/${lanyard.userId}`}>
-        <div className="CreatedBy">Created By: {lanyard.user?.name}</div>
+        <Link className="profile-link" to={`/profile/${lanyard.userId}`}>
+          <div className="CreatedBy">Created By: {lanyard.user?.name}</div>
         </Link>
         <div className="date">Created: {lanyard.dateCreated}</div>
         {/* Like button */}

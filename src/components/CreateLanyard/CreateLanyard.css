@@ -1,3 +1,61 @@
+.create{
+    padding-top: 120px;
+    display: flex;
+    gap: 200px;
+    justify-content: center;
+}
+
+.options-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 4px double var(--col-1);
+    padding: 50px;
+    padding-right: 5px;
+    gap: 10px;
+    background-color: var(--col-4);
+}
+
+.create-name{
+    justify-self: center;
+}
+
+.name-input{
+    border-radius: 3px;
+    border: 4px double black;
+    font-size: large;
+}
+
+.option-item{
+    background-color:antiquewhite;
+    font-size: large;
+    padding: 8px;
+}
+
+.option-label{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.option-dropDown{
+    font-size: medium;
+}
+
+.option-checkbox{
+    width: 20px;
+    height: 20px;
+}
+
 .lanyard-preview{
-    max-width: 300px;
+    max-width: 350px;
+    border: 4px solid black;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.save-btn{
+    border-radius: 20px;
+    font-size: large;
+    margin-top: 5px;
 }

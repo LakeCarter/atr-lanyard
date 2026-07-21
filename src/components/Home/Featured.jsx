@@ -27,7 +27,7 @@ export const Featured = () => {
                 <div className="lanyard-card">
                   {/* image shown is just a place holder */}
                   <img className="lanyard-img" src={placeholder} />
-                  <div className="featured-name">{lanyard.name}</div>
+                  <div className="lanyard-name">{lanyard.name}</div>
                 </div>
               </Link>
             )

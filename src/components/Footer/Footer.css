@@ -8,8 +8,14 @@ position: relative;
   background-color: var(--col-0);
   flex-grow: 0;
   max-height: 300px;
+  border-top:4px double var(--col-1) ;
+  box-shadow: var(--shadow-top);
 }
 
 .footer-contact{
   color: var(--text-light);
+}
+
+.footer-logo{
+  max-width: 75px;
 }

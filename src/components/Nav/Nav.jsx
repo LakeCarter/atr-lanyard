@@ -16,7 +16,9 @@ export const Nav = ({ currentUser }) => {
     }
   }, [currentUser])
 
-  const toggleDrop = () =>{setShowDrop(!showDrop)}
+  const toggleDrop = () => {
+    setShowDrop(!showDrop)
+  }
 
   return (
     <>
@@ -42,39 +44,66 @@ export const Nav = ({ currentUser }) => {
           </li>
         </ul>
         {/* Profile Button - When pressed a menu will drop down to display the below profile options*/}
-          <div className="nav-profile-menu">
-            <button className="nav-profile-btn" onClick={toggleDrop} aria-haspopup="true"
-        aria-expanded={showDrop}>
+        <div className="nav-profile-menu">
+          <button
+            className="nav-profile-btn"
+            onClick={toggleDrop}
+            aria-haspopup="true"
+            aria-expanded={showDrop}
+          >
+            <div className="nav-profile-imgFrame">
               <img className="nav-profile-img" src={userProfile.profileImg} />
-            </button>
-            <ul className="drop-menu" style={showDrop?({visibility:"visible", opacity:1, transform:"translateY(0)"}):({visibility:"hidden", opacity:0, transform:"translateY(-10px)"})}>
-              {/* View Profile  */}
-              <Link className="drop-link" to={`/profile/${currentUser.id}`} onClick={()=>setShowDrop(false)}>
-                <li className="drop-item">View Profile</li>
+            </div>
+          </button>
+          <ul
+            className="drop-menu"
+            style={
+              showDrop
+                ? {
+                    visibility: "visible",
+                    opacity: 1,
+                    transform: "translateY(0)",
+                  }
+                : {
+                    visibility: "hidden",
+                    opacity: 0,
+                    transform: "translateY(-10px)",
+                  }
+            }
+          >
+            {/* View Profile  */}
+            <Link
+              className="drop-link"
+              to={`/profile/${currentUser.id}`}
+              onClick={() => setShowDrop(false)}
+            >
+              <li className="drop-item">View Profile</li>
+            </Link>
+            {/* Favorites */}
+            <Link
+              className="drop-link"
+              to={"/favorites"}
+              onClick={() => setShowDrop(false)}
+            >
+              <li className="drop-item">Favorites</li>
+            </Link>
+            {/* Log out button */}
+            {localStorage.getItem("atr_user") ? (
+              <Link
+                className="drop-link"
+                to=""
+                onClick={() => {
+                  localStorage.removeItem("atr_user")
+                  navigate("/login", { replace: true })
+                }}
+              >
+                <li className="drop-item navbar-logout">Logout</li>
               </Link>
-              {/* Favorites */}
-              <Link className="drop-link" to={"/favorites"} onClick={()=>setShowDrop(false)}>
-                <li className="drop-item">Favorites</li>
-              </Link>
-              {/* Log out button */}
-              {localStorage.getItem("atr_user") ? (
-                <Link
-                    className="drop-link"
-                    to=""
-                    onClick={() => {
-                      localStorage.removeItem("atr_user")
-                      navigate("/login", { replace: true })
-                    }}
-                  >
-                      <li className="drop-item navbar-logout">
-                    Logout
-                </li>
-                  </Link>
-              ) : (
-                ""
-              )}
-            </ul>
-          </div>
+            ) : (
+              ""
+            )}
+          </ul>
+        </div>
       </div>
     </>
   )

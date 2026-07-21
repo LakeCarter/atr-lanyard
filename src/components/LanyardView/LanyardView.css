@@ -1,3 +1,94 @@
+.view-container{
+    padding-top: 120px;
+    display: flex;
+    justify-self: center;
+    gap: 100px;
+}
+
+.lanyard-card{
+    display: flex;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+
+}
+
 .lanyard-placeholder{
-    max-width: 300px;
+    max-width: 400px;
+}
+
+.lanyard-name{
+    position:absolute;
+    align-self: flex-end;
+    background-color: rgba(250, 235, 215, 0.747);
+    margin-bottom: auto;
+    padding: 10px;
+    border-radius: 0 20px 0 0;
+}
+
+.details-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    font-size: larger;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-link{
+    text-decoration: none;
+    color: black;
+}
+
+.profile-link:hover{
+text-shadow: var(--shadow);
+color: rgb(83, 82, 82);
+}
+
+.like-container{
+    display: flex;
+  box-shadow: var(--shadow-light);
+    
+}
+
+.like-btn{
+    background-color: var(--col-5);
+    color: var(--text-light);
+    font-size: large;
+}
+
+.like-btn:hover{
+    background-color: var(--col-6);
+}
+
+.like-count{
+    background-color: var(--col-6);
+    color: var(--text-light);
+    padding: 5px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.owner-options{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-btn{
+    margin-bottom: auto;
+    border-radius: 6px;
+    background-color: var(--col-4);
+    color: var(--text-light);
+}
+
+.delete-btn{
+    margin-top: auto;
+    border-radius: 6px;
+    background-color: var(--col-4);
+    color: var(--text-light);
+}
+
+.delete-btn:hover{
+    background-color: brown;
 }

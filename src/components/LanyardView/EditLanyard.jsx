@@ -13,7 +13,7 @@ import lanyardPreview from "../../assets/lanyardPlaceHolder.png"
 import { useNavigate, useParams } from "react-router-dom"
 
 export const EditLanyard = ({ currentUser }) => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const { lanyardId } = useParams()
   const [lanyard, setLanyard] = useState({})
   const [braidStyles, setBraidStyles] = useState([])
@@ -36,24 +36,26 @@ export const EditLanyard = ({ currentUser }) => {
     })
   }, [])
 
-  useEffect(()=>{
-setEditedLanyard({id: lanyard.id,
-    userId: lanyard.userId,
-    dateCreated: lanyard.dateCreated,
-    braidStyleId: lanyard.braidStyleId,
-    numberOfDropsId: lanyard.numberOfDropsId,
-    neckStyleId: lanyard.neckStyleId,
-    qdDrop: lanyard.qdDrop,
-    primaryCordColor1: lanyard.primaryCordColor1,
-    primaryCordColor2: lanyard.primaryCordColor2,
-    neckRestColor1: lanyard.neckRestColor1,
-    neckRestColor2: lanyard.neckRestColor2,
-    bridgeBraidColor1: lanyard.bridgeBraidColor1,
-    bridgeBraidColor2: lanyard.bridgeBraidColor2,
-    sideDropColor: lanyard.sideDropColor,
-    mainDropColor: lanyard.mainDropColor,
-    name: lanyard.name,})
-},[lanyard])
+  useEffect(() => {
+    setEditedLanyard({
+      id: lanyard.id,
+      userId: lanyard.userId,
+      dateCreated: lanyard.dateCreated,
+      braidStyleId: lanyard.braidStyleId,
+      numberOfDropsId: lanyard.numberOfDropsId,
+      neckStyleId: lanyard.neckStyleId,
+      qdDrop: lanyard.qdDrop,
+      primaryCordColor1: lanyard.primaryCordColor1,
+      primaryCordColor2: lanyard.primaryCordColor2,
+      neckRestColor1: lanyard.neckRestColor1,
+      neckRestColor2: lanyard.neckRestColor2,
+      bridgeBraidColor1: lanyard.bridgeBraidColor1,
+      bridgeBraidColor2: lanyard.bridgeBraidColor2,
+      sideDropColor: lanyard.sideDropColor,
+      mainDropColor: lanyard.mainDropColor,
+      name: lanyard.name,
+    })
+  }, [lanyard])
 
   const handleSelection = (event) => {
     const stateClone = { ...editedLanyard }
@@ -70,11 +72,16 @@ setEditedLanyard({id: lanyard.id,
   }
 
   return (
-    <div className="create">
-      <div className="lanyard-preview">
+    <form
+      className="create"
+      onSubmit={(event) => {
+        handleSave(event)
+      }}
+    >
+      <div className="preview-preview">
         {/* Image that will display what is being created */}
         <img className="lanyard-preview" src={lanyardPreview} />
-        <div className="lanyard-name">
+        <div className="create-name">
           <input
             type="text"
             className="name-input"
@@ -88,233 +95,233 @@ setEditedLanyard({id: lanyard.id,
           />
         </div>
       </div>
+
       {/* Lanyard options */}
-      <form
-        className="options-list"
-        onSubmit={(event) => {
-          handleSave(event)
-        }}
-      >
-        {/* Braid style */}
-        <div className="options-item">
-          <label className="option-label">
-            Braid Style:
-            <select
-              className="option-dropDown"
-              name="braidStyleId"
-              value={editedLanyard.braidStyleId}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            >
-              {braidStyles.map((braid) => {
-                return (
-                  <option value={braid.id} key={braid.id}>
-                    {braid.name}
-                  </option>
-                )
-              })}
-            </select>
-          </label>
+      <div className="options-list">
+        <div className="option-style">
+          {/* Braid style */}
+          <div className="option-item">
+            <label className="option-label">
+              Braid Style:
+              <select
+                className="option-dropDown"
+                name="braidStyleId"
+                value={editedLanyard.braidStyleId}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              >
+                {braidStyles.map((braid) => {
+                  return (
+                    <option value={braid.id} key={braid.id}>
+                      {braid.name}
+                    </option>
+                  )
+                })}
+              </select>
+            </label>
+          </div>
+
+          {/* Number of drops */}
+          <div className="option-item">
+            <label className="option-label">
+              Number of drops:
+              <select
+                className="option-dropDown"
+                name="numberOfDropsId"
+                value={editedLanyard.numberOfDropsId}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              >
+                {allNumberOfDrops.map((dropOption) => {
+                  return (
+                    <option value={dropOption.id} key={dropOption.id}>
+                      {dropOption.number}
+                    </option>
+                  )
+                })}
+              </select>
+            </label>
+          </div>
+
+          {/* Neck rest style */}
+          <div className="option-item">
+            <label className="option-label">
+              Neck reset style
+              <select
+                className="option-dropDown"
+                name="neckStyleId"
+                value={editedLanyard.neckStyleId}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              >
+                {neckStyles.map((neckStyle) => {
+                  return (
+                    <option value={neckStyle.id} key={neckStyle.id}>
+                      {neckStyle.name}
+                    </option>
+                  )
+                })}
+              </select>
+            </label>
+          </div>
+
+          {/* QD Drops */}
+          <div className="option-item">
+            <label className="option-label">
+              Quick Detach Drops?:
+              <input
+                type="checkbox"
+                className="option-checkbox"
+                value={true}
+                name="qdDrop"
+                defaultChecked={lanyard.qdDrop}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
         </div>
 
-        {/* Number of drops */}
-        <div className="option-item">
-          <label className="option-label">
-            Number of drops:
-            <select
-              className="option-dropDown"
-              name="numberOfDropsId"
-              value={editedLanyard.numberOfDropsId}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            >
-              {allNumberOfDrops.map((dropOption) => {
-                return (
-                  <option value={dropOption.id} key={dropOption.id}>
-                    {dropOption.number}
-                  </option>
-                )
-              })}
-            </select>
-          </label>
-        </div>
+        <div className="options-colors">
+          {/* Primary Cord Color 1 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Primary Cord Color 1
+              <input
+                type="color"
+                name="primaryCordColor1"
+                defaultValue={lanyard.primaryCordColor1}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* Neck rest style */}
-        <div className="option-item">
-          <label className="option-label">
-            Neck reset style
-            <select
-              className="option-dropDown"
-              name="neckStyleId"
-              value={editedLanyard.neckStyleId}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            >
-              {neckStyles.map((neckStyle) => {
-                return (
-                  <option value={neckStyle.id} key={neckStyle.id}>
-                    {neckStyle.name}
-                  </option>
-                )
-              })}
-            </select>
-          </label>
-        </div>
+          {/* Primary Cord Color 2 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Primary Cord Color 2
+              <input
+                type="color"
+                name="primaryCordColor2"
+                defaultValue={lanyard.primaryCordColor2}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* QD Drops */}
-        <div className="option-item">
-          <label className="option-label">
-            Quick Detach Drops?:
-            <input
-              type="checkbox"
-              className="option-checkbox"
-              value={true}
-              name="qdDrop"
-              defaultChecked={lanyard.qdDrop}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
+          {/* Neck rest Color 1 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Neck rest Color 1
+              <input
+                type="color"
+                name="neckRestColor1"
+                defaultValue={lanyard.neckRestColor1}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* Primary Cord Color 1 */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Primary Cord Color 1
-            <input
-              type="color"
-              name="primaryCordColor1"
-              defaultValue={lanyard.primaryCordColor1}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
+          {/* Neck rest Color 2 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Neck rest Color 2
+              <input
+                type="color"
+                name="neckRestColor2"
+                defaultValue={lanyard.neckRestColor2}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* Primary Cord Color 2 */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Primary Cord Color 2
-            <input
-              type="color"
-              name="primaryCordColor2"
-              defaultValue={lanyard.primaryCordColor2}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
+          {/* Bridge braid Color 1 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Bridge braid Color 1
+              <input
+                type="color"
+                name="bridgeBraidColor1"
+                defaultValue={lanyard.bridgeBraidColor1}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* Neck rest Color 1 */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Neck rest Color 1
-            <input
-              type="color"
-              name="neckRestColor1"
-              defaultValue={lanyard.neckRestColor1}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
+          {/* Bridge braid Color 2 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Bridge braid Color 2
+              <input
+                type="color"
+                name="bridgeBraidColor2"
+                defaultValue={lanyard.bridgeBraidColor2}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* Neck rest Color 2 */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Neck rest Color 2
-            <input
-              type="color"
-              name="neckRestColor2"
-              defaultValue={lanyard.neckRestColor2}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
+          {/* Side Drops Color */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Side Drops Color
+              <input
+                type="color"
+                name="sideDropColor"
+                defaultValue={lanyard.sideDropColor}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
 
-        {/* Bridge braid Color 1 */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Bridge braid Color 1
-            <input
-              type="color"
-              name="bridgeBraidColor1"
-              defaultValue={lanyard.bridgeBraidColor1}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
+          {/* Main Drops Color */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Main Drop Color
+              <input
+                type="color"
+                name="mainDropColor"
+                defaultValue={lanyard.mainDropColor}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
+          {/* Save button */}
+          <div className="save-btn">
+            <button type="submit" className="save-btn">
+              Save Lanyard
+            </button>
+          </div>
         </div>
-
-        {/* Bridge braid Color 2 */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Bridge braid Color 2
-            <input
-              type="color"
-              name="bridgeBraidColor2"
-              defaultValue={lanyard.bridgeBraidColor2}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
-
-        {/* Side Drops Color */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Side Drops Color
-            <input
-              type="color"
-              name="sideDropColor"
-              defaultValue={lanyard.sideDropColor}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
-
-        {/* Main Drops Color */}
-        <div className="option-item">
-          <label className="option-label">
-            {" "}
-            Main Drop Color
-            <input
-              type="color"
-              name="mainDropColor"
-              defaultValue={lanyard.mainDropColor}
-              onChange={(event) => {
-                handleSelection(event)
-              }}
-            />
-          </label>
-        </div>
-        {/* Save button */}
-        <div className="save-btn">
-          <button type="submit" className="save-btn">
-            Save Lanyard
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   )
 }

@@ -31,7 +31,7 @@ export const Favorites = ({ currentUser }) => {
     <div className="fav-container">
       <header className="page-header">Favorites</header>
       {/* If the user has no favorites the following message will display  */}
-      {favLanyards ? (
+      {!favLanyards ? (
         <div className="nothingToDisplay">
           Here you can see the posts you have liked.
           <div className="nothingToDisplay">

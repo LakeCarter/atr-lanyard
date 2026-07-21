@@ -28,6 +28,7 @@
     border-left: 0;
     border-right: 0;
     padding: 5px;
+    background-color: var(--col-5);
 }
 
 .filter-bar{

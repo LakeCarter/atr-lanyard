@@ -1,9 +1,10 @@
 import "./Footer.css"
+import logo from "../../assets/atrLogo.png"
 
 export const Footer = () =>{
     return(
         <footer className="home-footer">
-          <img src="src\assets\atrLogo.png" className="home-Logo" />
+          <img className="footer-logo" src={logo} />
           <div className="footer-contact">
             Contact: ATROutdoors@duckmail.com{" "}
           </div>

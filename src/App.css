@@ -6,11 +6,14 @@
   --col-2: #3b3213;
   --col-3: #5b340a;
   --col-4: #86807a;
+  --col-5: #386326;
+  --col-6: #4b8333;
 
   --text-light: #fffef6;
 
   --shadow: rgba(0, 0, 0, 0.705) 2px 2px 5px;
-
+  --shadow-light: rgba(68, 68, 68, 0.514) 0px 2px 2px;
+  --shadow-top: rgba(0, 0, 0, 0.705) 0px 6px 10px 5px;
 }
 
 body {
@@ -19,26 +22,28 @@ body {
   height: 100%;
   font-family: "Merriweather Sans", sans-serif;
   font-weight: 300;
-
-  
 }
 
 li {
   list-style: none;
 }
 
-.site-layout{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.site-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.site-content{
-    flex: 1;
+.site-content {
+  flex: 1;
 }
 
-.page-header{
+.page-header {
   font-size: xx-large;
   font-weight: 500;
   margin: 10px;
+}
+
+body{
+    background-color: rgb(248, 235, 220);
 }
