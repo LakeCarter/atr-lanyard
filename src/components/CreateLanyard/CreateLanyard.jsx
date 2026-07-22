@@ -35,9 +35,9 @@ export const CreateLanyard = ({ currentUser }) => {
       id: 0,
       userId: currentUser.id,
       dateCreated: "",
-      braidStyleId: 0,
-      numberOfDropsId: 0,
-      neckStyleId: 0,
+      braidStyleId: 1,
+      numberOfDropsId: 1,
+      neckStyleId: 2,
       qdDrop: false,
       primaryCordColor1: "#000000",
       primaryCordColor2: "#000000",
@@ -81,7 +81,7 @@ export const CreateLanyard = ({ currentUser }) => {
     >
       <div className="preview-container">
         {/* Image that will display what is being created */}
-        <DisplayLanyard/>
+        <DisplayLanyard newLanyard={newLanyard}/>
         <div className="create-name">
           <input
             type="text"

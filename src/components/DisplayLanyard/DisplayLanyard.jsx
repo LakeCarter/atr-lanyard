@@ -13,31 +13,49 @@ import drop4 from "../../assets/lanyardAssets/drop4.png"
 import mainDrop1 from "../../assets/lanyardAssets/mainDrop1.png"
 import mainDrop2 from "../../assets/lanyardAssets/mainDrop2.png"
 import { useEffect, useState } from "react"
+import {
+  getBraidStylesById,
+  getNeckStylesById,
+} from "../../services/optionsService.js"
 
+export const DisplayLanyard = ({ newLanyard }) => {
+  const [primaryCords, setPrimaryCords] = useState({})
+  const [neckCords, setNeckCords] = useState({})
 
+  useEffect(() => {
+    getBraidStylesById(newLanyard.braidStyleId).then((styleObj) => {
+      setPrimaryCords(styleObj[0])
+    })
+    getNeckStylesById(newLanyard.neckStyleId).then((neckObj) => {
+      setNeckCords(neckObj[0])
+    })
+  }, [newLanyard])
 
+  return (
+    <div className="display-container">
+      {/* main braid  */}
+      {primaryCords?.images?.map((cordImg) => {
+        return (
+          <img
+            className={`lanyard-part ${cordImg.name}`}
+            key={cordImg.name}
+            src={cordImg.img}
+          />
+        )
+      })}
 
-export const DisplayLanyard = () => {
+      {/* neck braid  */}
+      {neckCords?.images?.map((cordImg) => {
+        return (
+          <img
+            className={`lanyard-part ${cordImg.name}`}
+            key={cordImg.name}
+            src={cordImg.img}
+          />
+        )
+      })}
 
-  const [lanyard, setLanyard] = useState([])
-
-useEffect(()=>{
-  setLanyard({
-    
-  })
-},[])
-
-  return <div className="display-container">
-    {/* main braid  */}
-    <img className="lanyard-part prim-1" src={braid1}/>
-    <img className="lanyard-part prim-2" src={braid2}/>
-    <img className="lanyard-part prim-3" src={braid3}/>
-
-    {/* neck braid  */}
-    <img className="lanyard-part neck-1" src={neck1}/>
-    <img className="lanyard-part neck-2" src={neck2}/>
-
-    {/* side drops  */}
-    
+      {/* side drops  */}
     </div>
+  )
 }
