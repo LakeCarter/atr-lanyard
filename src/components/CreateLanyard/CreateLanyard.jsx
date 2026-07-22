@@ -7,6 +7,8 @@ import {
 } from "../../services/optionsService.js"
 import { saveNewLanyard } from "../../services/lanyardService.js"
 import { useNavigate } from "react-router-dom"
+import { DisplayLanyard } from "../DisplayLanyard/DisplayLanyard.jsx"
+
 
 export const CreateLanyard = ({ currentUser }) => {
   const [braidStyles, setBraidStyles] = useState([])
@@ -79,10 +81,7 @@ export const CreateLanyard = ({ currentUser }) => {
     >
       <div className="preview-container">
         {/* Image that will display what is being created */}
-        <img
-          className="lanyard-preview"
-          src="src\assets\lanyardPlaceHolder.png"
-        />
+        <DisplayLanyard/>
         <div className="create-name">
           <input
             type="text"
