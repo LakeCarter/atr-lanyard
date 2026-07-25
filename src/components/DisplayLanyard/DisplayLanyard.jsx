@@ -1,26 +1,19 @@
 import "./DisplayLanyard.css"
-import braid1 from "../../assets/lanyardAssets/prim1.PNG"
-import braid2 from "../../assets/lanyardAssets/prim2.PNG"
-import braid3 from "../../assets/lanyardAssets/prim3.PNG"
-import neck1 from "../../assets/lanyardAssets/neck1.png"
-import neck2 from "../../assets/lanyardAssets/neck2.png"
 import bridge1 from "../../assets/lanyardAssets/bridge1.png"
 import bridge2 from "../../assets/lanyardAssets/bridge2.png"
-import drop1 from "../../assets/lanyardAssets/drop1.png"
-import drop2 from "../../assets/lanyardAssets/drop2.png"
-import drop3 from "../../assets/lanyardAssets/drop3.png"
-import drop4 from "../../assets/lanyardAssets/drop4.png"
 import mainDrop1 from "../../assets/lanyardAssets/mainDrop1.png"
 import mainDrop2 from "../../assets/lanyardAssets/mainDrop2.png"
 import { useEffect, useState } from "react"
 import {
   getBraidStylesById,
   getNeckStylesById,
+  getSideDropsById,
 } from "../../services/optionsService.js"
 
 export const DisplayLanyard = ({ newLanyard }) => {
   const [primaryCords, setPrimaryCords] = useState({})
   const [neckCords, setNeckCords] = useState({})
+  const [sideDrops, setSideDrops] = useState({})
 
   useEffect(() => {
     getBraidStylesById(newLanyard.braidStyleId).then((styleObj) => {
@@ -29,10 +22,13 @@ export const DisplayLanyard = ({ newLanyard }) => {
     getNeckStylesById(newLanyard.neckStyleId).then((neckObj) => {
       setNeckCords(neckObj[0])
     })
+    getSideDropsById(newLanyard.numberOfDropsId).then((dropObj)=>{
+      setSideDrops(dropObj[0])
+    })
   }, [newLanyard])
 
   return (
-    <div className="display-container">
+    <div className="lanyard-box">
       {/* main braid  */}
       {primaryCords?.images?.map((cordImg) => {
         return (
@@ -56,6 +52,27 @@ export const DisplayLanyard = ({ newLanyard }) => {
       })}
 
       {/* side drops  */}
+      <img
+        className="lanyard-part sideDrops"
+        src={sideDrops?.image}
+        />
+
+      {/* Bridge  */}
+      <img 
+        className="lanyard-part bridge1"
+        src={bridge1}/>
+      <img 
+        className="lanyard-part bridge2"
+        src={bridge2}/>
+
+      {/* Main drops */}
+      <img
+        className="lanyard-part mainDrop1"
+        src={mainDrop1}/>
+      <img
+        className="lanyard-part mainDrop2"
+        src={mainDrop2}/>
+
     </div>
   )
 }

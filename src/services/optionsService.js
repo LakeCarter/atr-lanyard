@@ -17,3 +17,6 @@ export const getBraidStylesById = (braidStyleId) => {
 export const getNeckStylesById = (neckStyleId) => {
     return fetch(`http://localhost:8088/neckStyle?id=${neckStyleId}`).then(res=>res.json())
 }
+export const getSideDropsById = (sideDropId) => {
+    return fetch(`http://localhost:8088/numberOfDrops?id=${sideDropId}`).then(res=>res.json())
+}

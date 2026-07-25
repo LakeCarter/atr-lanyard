@@ -61,6 +61,14 @@
 }
 
 .preview-container{
-    margin-right: auto;
-    margin-left: 60px;
+    margin-right: 50px;
+    margin-left: 70px;
+}
+
+.preview-window{
+    width: 550px;
+    height: 600px;
+    position: relative;
+    background-color: rgb(225, 214, 195);
+    border: 5px double var(--col-4);
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Home.css"
 import backgroundImg from "../../assets/pictures/img2.jpg"
+import quoteImg from "../../assets/pictures/img4.jpg"
 import { Featured } from "./Featured.jsx"
 
 export const Home = () => {

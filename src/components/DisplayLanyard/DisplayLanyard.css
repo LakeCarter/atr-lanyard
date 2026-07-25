@@ -2,4 +2,16 @@
 
 .lanyard-part{
     position:absolute;
+    width: auto;
+    object-fit:fill;
+    width: 100%;         /* 4. Forces image to match parent width */
+  height: 100%;        /* 5. Forces image to match parent height */
+}
+
+.neck1{
+    filter:hue-rotate(180deg)
+}
+
+.neck2{
+    filter: hue-rotate(60deg)
 }
