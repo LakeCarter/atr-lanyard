@@ -1,8 +1,13 @@
 import "./DisplayLanyard.css"
-import bridge1 from "../../assets/lanyardAssets/bridge1.png"
-import bridge2 from "../../assets/lanyardAssets/bridge2.png"
-import mainDrop1 from "../../assets/lanyardAssets/mainDrop1.png"
-import mainDrop2 from "../../assets/lanyardAssets/mainDrop2.png"
+import bridgeBase1 from "../../assets/lanyardAssets/Base/Br base 1.png"
+import bridgeBase2 from "../../assets/lanyardAssets/Base/Br base 2.png"
+import bridgeMask1 from "../../assets/lanyardAssets/Mask/Br mask 1.png"
+import bridgeMask2 from "../../assets/lanyardAssets/Mask/Br mask 2.png"
+import mainDropBase1 from "../../assets/lanyardAssets/Base/Md base 1.png"
+import mainDropBase2 from "../../assets/lanyardAssets/Base/Md base 2.png"
+import mainDropMask1 from "../../assets/lanyardAssets/Mask/Md mask 1.png"
+import mainDropMask2 from "../../assets/lanyardAssets/Mask/Md mask 2.png"
+
 import { useEffect, useState } from "react"
 import {
   getBraidStylesById,
@@ -22,57 +27,131 @@ export const DisplayLanyard = ({ newLanyard }) => {
     getNeckStylesById(newLanyard.neckStyleId).then((neckObj) => {
       setNeckCords(neckObj[0])
     })
-    getSideDropsById(newLanyard.numberOfDropsId).then((dropObj)=>{
+    getSideDropsById(newLanyard.numberOfDropsId).then((dropObj) => {
       setSideDrops(dropObj[0])
     })
   }, [newLanyard])
 
+  // function to find what color value to use from the lanyard obj on the displayed lanyard part
+  const getColorPicker = (cordName) => {
+    if (cordName === "prim1") {
+      return newLanyard.primaryCordColor1
+    }
+    if (cordName === "prim2") {
+      return newLanyard.primaryCordColor2
+    }
+    if (cordName === "prim3") {
+      return newLanyard.primaryCordColor3
+    }
+  }
+
   return (
-    <div className="lanyard-box">
-      {/* main braid  */}
-      {primaryCords?.images?.map((cordImg) => {
-        return (
-          <img
-            className={`lanyard-part ${cordImg.name}`}
-            key={cordImg.name}
-            src={cordImg.img}
+    <>
+      <div className="lanyard-box">
+        {/* main braid  */}
+        {primaryCords?.images?.map((cordImg) => {
+          return (
+            <section key={cordImg.name}>
+              <div
+                className="mask-color"
+                style={{
+                  backgroundColor: `${getColorPicker(cordImg.name)}`,
+                  WebkitMaskImage: `url("${cordImg.imgMask}")`,
+                  maskImage: `url("${cordImg.imgMask}")`,
+                }}
+              />
+
+              <img className={`lanyard-part base-img`} src={cordImg.imgBase} />
+            </section>
+          )
+        })}
+
+        {/* neck braid  */}
+        {neckCords?.images?.map((cordImg) => {
+          return (
+            <section key={cordImg.name}>
+              <div
+                className="mask-color"
+                style={{
+                  backgroundColor: `${cordImg.name === "neck1" ? newLanyard.neckRestColor1 : newLanyard.neckRestColor2}`,
+                  WebkitMaskImage: `url("${cordImg.imgMask}")`,
+                  maskImage: `url("${cordImg.imgMask}")`,
+                }}
+              />
+
+              <img className={`lanyard-part base-img`} src={cordImg.imgBase} />
+            </section>
+          )
+        })}
+
+        {/* side drops  */}
+        <section key={sideDrops?.id}>
+          <div
+            className="mask-color"
+            style={{
+              backgroundColor: `${newLanyard.sideDropColor}`,
+              WebkitMaskImage: `url("${sideDrops?.imgMask}")`,
+              maskImage: `url("${sideDrops?.imgMask}")`,
+            }}
           />
-        )
-      })}
 
-      {/* neck braid  */}
-      {neckCords?.images?.map((cordImg) => {
-        return (
-          <img
-            className={`lanyard-part ${cordImg.name}`}
-            key={cordImg.name}
-            src={cordImg.img}
+          <img className="lanyard-part base-img" src={sideDrops?.imgBase} />
+        </section>
+
+        {/* Bridge  */}
+        <section key={"bridge1"}>
+          <div
+            className="mask-color"
+            style={{
+              backgroundColor: `${newLanyard.bridgeBraidColor1}`,
+              WebkitMaskImage: `url("${bridgeMask1}")`,
+              maskImage: `url("${bridgeMask1}")`,
+            }}
           />
-        )
-      })}
 
-      {/* side drops  */}
-      <img
-        className="lanyard-part sideDrops"
-        src={sideDrops?.image}
-        />
+          <img className="lanyard-part base-img" src={bridgeBase1} />
+        </section>
 
-      {/* Bridge  */}
-      <img 
-        className="lanyard-part bridge1"
-        src={bridge1}/>
-      <img 
-        className="lanyard-part bridge2"
-        src={bridge2}/>
+        <section key={"bridge2"}>
+          <div
+            className="mask-color"
+            style={{
+              backgroundColor: `${newLanyard.bridgeBraidColor2}`,
+              WebkitMaskImage: `url("${bridgeMask2}")`,
+              maskImage: `url("${bridgeMask2}")`,
+            }}
+          />
 
-      {/* Main drops */}
-      <img
-        className="lanyard-part mainDrop1"
-        src={mainDrop1}/>
-      <img
-        className="lanyard-part mainDrop2"
-        src={mainDrop2}/>
+          <img className="lanyard-part base-img" src={bridgeBase2} />
+        </section>
 
-    </div>
+        {/* Main drops */}
+        <section key={"mainDrop1"}>
+          <div
+            className="mask-color"
+            style={{
+              backgroundColor: `${newLanyard.mainDropColor}`,
+              WebkitMaskImage: `url("${mainDropMask1}")`,
+              maskImage: `url("${mainDropMask1}")`,
+            }}
+          />
+
+          <img className="lanyard-part base-img" src={mainDropBase1} />
+        </section>
+
+        <section key={"mainDrop2"}>
+          <div
+            className="mask-color"
+            style={{
+              backgroundColor: `${newLanyard.mainDropColor}`,
+              WebkitMaskImage: `url("${mainDropMask2}")`,
+              maskImage: `url("${mainDropMask2}")`,
+            }}
+          />
+
+          <img className="lanyard-part base-img" src={mainDropBase2} />
+        </section>
+      </div>
+    </>
   )
 }

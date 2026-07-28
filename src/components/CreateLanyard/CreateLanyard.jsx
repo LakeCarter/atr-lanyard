@@ -41,6 +41,7 @@ export const CreateLanyard = ({ currentUser }) => {
       qdDrop: false,
       primaryCordColor1: "#000000",
       primaryCordColor2: "#000000",
+      primaryCordColor3: "#000000",
       neckRestColor1: "#000000",
       neckRestColor2: "#000000",
       bridgeBraidColor1: "#000000",
@@ -213,6 +214,21 @@ export const CreateLanyard = ({ currentUser }) => {
               <input
                 type="color"
                 name="primaryCordColor2"
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
+
+          {/* Primary Cord Color 3 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Primary Cord Color 3
+              <input
+                type="color"
+                name="primaryCordColor3"
                 onChange={(event) => {
                   handleSelection(event)
                 }}
