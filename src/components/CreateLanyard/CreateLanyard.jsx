@@ -9,7 +9,6 @@ import { saveNewLanyard } from "../../services/lanyardService.js"
 import { useNavigate } from "react-router-dom"
 import { DisplayLanyard } from "../DisplayLanyard/DisplayLanyard.jsx"
 
-
 export const CreateLanyard = ({ currentUser }) => {
   const [braidStyles, setBraidStyles] = useState([])
   const [allNumberOfDrops, setAllNumberOfDrops] = useState([])
@@ -39,15 +38,15 @@ export const CreateLanyard = ({ currentUser }) => {
       numberOfDropsId: 2,
       neckStyleId: 2,
       qdDrop: false,
-      primaryCordColor1: "#000000",
-      primaryCordColor2: "#000000",
-      primaryCordColor3: "#000000",
-      neckRestColor1: "#000000",
-      neckRestColor2: "#000000",
-      bridgeBraidColor1: "#000000",
-      bridgeBraidColor2: "#000000",
-      sideDropColor: "#000000",
-      mainDropColor: "#000000",
+      primaryCordColor1: "#957c50",
+      primaryCordColor2: "#957c50",
+      primaryCordColor3: "#f9e1b8",
+      neckRestColor1: "#957c50",
+      neckRestColor2: "#6979ab",
+      bridgeBraidColor1: "#173503",
+      bridgeBraidColor2: "#d9d9d9",
+      sideDropColor: "#5e6a94",
+      mainDropColor: "#957c50",
       name: "",
       featured: false,
     })
@@ -83,7 +82,7 @@ export const CreateLanyard = ({ currentUser }) => {
       <div className="preview-container">
         {/* Image that will display what is being created */}
         <div className="preview-window">
-        <DisplayLanyard newLanyard={newLanyard}/>
+          <DisplayLanyard lanyard={newLanyard} />
         </div>
         <div className="create-name">
           <input
@@ -101,7 +100,6 @@ export const CreateLanyard = ({ currentUser }) => {
 
       {/* Lanyard options */}
       <div className="options-list">
-        
         <div className="options-styles">
           {/* Braid style */}
           <div className="option-item">
@@ -199,6 +197,7 @@ export const CreateLanyard = ({ currentUser }) => {
               <input
                 type="color"
                 name="primaryCordColor1"
+                defaultValue={newLanyard.primaryCordColor1}
                 onChange={(event) => {
                   handleSelection(event)
                 }}
@@ -213,6 +212,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Primary Cord Color 2
               <input
                 type="color"
+                defaultValue={newLanyard.primaryCordColor2}
                 name="primaryCordColor2"
                 onChange={(event) => {
                   handleSelection(event)
@@ -228,6 +228,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Primary Cord Color 3
               <input
                 type="color"
+                defaultValue={newLanyard.primaryCordColor3}
                 name="primaryCordColor3"
                 onChange={(event) => {
                   handleSelection(event)
@@ -243,6 +244,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Neck rest Color 1
               <input
                 type="color"
+                defaultValue={newLanyard.neckRestColor1}
                 name="neckRestColor1"
                 onChange={(event) => {
                   handleSelection(event)
@@ -258,6 +260,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Neck rest Color 2
               <input
                 type="color"
+                defaultValue={newLanyard.neckRestColor2}
                 name="neckRestColor2"
                 onChange={(event) => {
                   handleSelection(event)
@@ -273,6 +276,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Bridge braid Color 1
               <input
                 type="color"
+                defaultValue={newLanyard.bridgeBraidColor1}
                 name="bridgeBraidColor1"
                 onChange={(event) => {
                   handleSelection(event)
@@ -288,6 +292,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Bridge braid Color 2
               <input
                 type="color"
+                defaultValue={newLanyard.bridgeBraidColor2}
                 name="bridgeBraidColor2"
                 onChange={(event) => {
                   handleSelection(event)
@@ -303,6 +308,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Side Drops Color
               <input
                 type="color"
+                defaultValue={newLanyard.sideDropColor}
                 name="sideDropColor"
                 onChange={(event) => {
                   handleSelection(event)
@@ -318,6 +324,7 @@ export const CreateLanyard = ({ currentUser }) => {
               Main Drop Color
               <input
                 type="color"
+                defaultValue={newLanyard.mainDropColor}
                 name="mainDropColor"
                 onChange={(event) => {
                   handleSelection(event)
@@ -325,12 +332,12 @@ export const CreateLanyard = ({ currentUser }) => {
               />
             </label>
           </div>
-        {/* Save button */}
-        <div className="save-btn">
-          <button type="submit" className="save-btn">
-            Save Lanyard
-          </button>
-        </div>
+          {/* Save button */}
+          <div className="save-btn">
+            <button type="submit" className="save-btn">
+              Save Lanyard
+            </button>
+          </div>
         </div>
       </div>
     </form>

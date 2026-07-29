@@ -15,33 +15,33 @@ import {
   getSideDropsById,
 } from "../../services/optionsService.js"
 
-export const DisplayLanyard = ({ newLanyard }) => {
+export const DisplayLanyard = ({ lanyard }) => {
   const [primaryCords, setPrimaryCords] = useState({})
   const [neckCords, setNeckCords] = useState({})
   const [sideDrops, setSideDrops] = useState({})
 
   useEffect(() => {
-    getBraidStylesById(newLanyard.braidStyleId).then((styleObj) => {
+    getBraidStylesById(lanyard.braidStyleId).then((styleObj) => {
       setPrimaryCords(styleObj[0])
     })
-    getNeckStylesById(newLanyard.neckStyleId).then((neckObj) => {
+    getNeckStylesById(lanyard.neckStyleId).then((neckObj) => {
       setNeckCords(neckObj[0])
     })
-    getSideDropsById(newLanyard.numberOfDropsId).then((dropObj) => {
+    getSideDropsById(lanyard.numberOfDropsId).then((dropObj) => {
       setSideDrops(dropObj[0])
     })
-  }, [newLanyard])
+  }, [lanyard])
 
   // function to find what color value to use from the lanyard obj on the displayed lanyard part
   const getColorPicker = (cordName) => {
     if (cordName === "prim1") {
-      return newLanyard.primaryCordColor1
+      return lanyard.primaryCordColor1
     }
     if (cordName === "prim2") {
-      return newLanyard.primaryCordColor2
+      return lanyard.primaryCordColor2
     }
     if (cordName === "prim3") {
-      return newLanyard.primaryCordColor3
+      return lanyard.primaryCordColor3
     }
   }
 
@@ -73,7 +73,7 @@ export const DisplayLanyard = ({ newLanyard }) => {
               <div
                 className="mask-color"
                 style={{
-                  backgroundColor: `${cordImg.name === "neck1" ? newLanyard.neckRestColor1 : newLanyard.neckRestColor2}`,
+                  backgroundColor: `${cordImg.name === "neck1" ? lanyard.neckRestColor1 : lanyard.neckRestColor2}`,
                   WebkitMaskImage: `url("${cordImg.imgMask}")`,
                   maskImage: `url("${cordImg.imgMask}")`,
                 }}
@@ -89,7 +89,7 @@ export const DisplayLanyard = ({ newLanyard }) => {
           <div
             className="mask-color"
             style={{
-              backgroundColor: `${newLanyard.sideDropColor}`,
+              backgroundColor: `${lanyard.sideDropColor}`,
               WebkitMaskImage: `url("${sideDrops?.imgMask}")`,
               maskImage: `url("${sideDrops?.imgMask}")`,
             }}
@@ -103,7 +103,7 @@ export const DisplayLanyard = ({ newLanyard }) => {
           <div
             className="mask-color"
             style={{
-              backgroundColor: `${newLanyard.bridgeBraidColor1}`,
+              backgroundColor: `${lanyard.bridgeBraidColor1}`,
               WebkitMaskImage: `url("${bridgeMask1}")`,
               maskImage: `url("${bridgeMask1}")`,
             }}
@@ -116,7 +116,7 @@ export const DisplayLanyard = ({ newLanyard }) => {
           <div
             className="mask-color"
             style={{
-              backgroundColor: `${newLanyard.bridgeBraidColor2}`,
+              backgroundColor: `${lanyard.bridgeBraidColor2}`,
               WebkitMaskImage: `url("${bridgeMask2}")`,
               maskImage: `url("${bridgeMask2}")`,
             }}
@@ -130,7 +130,7 @@ export const DisplayLanyard = ({ newLanyard }) => {
           <div
             className="mask-color"
             style={{
-              backgroundColor: `${newLanyard.mainDropColor}`,
+              backgroundColor: `${lanyard.mainDropColor}`,
               WebkitMaskImage: `url("${mainDropMask1}")`,
               maskImage: `url("${mainDropMask1}")`,
             }}
@@ -143,7 +143,7 @@ export const DisplayLanyard = ({ newLanyard }) => {
           <div
             className="mask-color"
             style={{
-              backgroundColor: `${newLanyard.mainDropColor}`,
+              backgroundColor: `${lanyard.mainDropColor}`,
               WebkitMaskImage: `url("${mainDropMask2}")`,
               maskImage: `url("${mainDropMask2}")`,
             }}

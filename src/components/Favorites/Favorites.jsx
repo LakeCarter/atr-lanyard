@@ -6,6 +6,7 @@ import {
 } from "../../services/likeService.js"
 import lanyardPlaceHolder from "../../assets/lanyardPlaceHolder.png"
 import { Link } from "react-router-dom"
+import { DisplayLanyard } from "../displayLanyard/DisplayLanyard.jsx"
 
 export const Favorites = ({ currentUser }) => {
   const [favLanyards, setFavLanyards] = useState([])
@@ -56,10 +57,10 @@ export const Favorites = ({ currentUser }) => {
                 Remove Like
               </button>
               <Link className="lanyard-link" to={`/lanyard/${fav.lanyard.id}`}>
-                <div className="lanyard-card">
+                <div className="lanyard-card --viewStandard">
                   {/* image shown is just a place holder */}
-                  <img className="lanyard-img" src={lanyardPlaceHolder} />
                   <div className="lanyard-name">{fav.lanyard.name}</div>
+                  <DisplayLanyard lanyard={fav.lanyard}/>
                 </div>
               </Link>
             </div>

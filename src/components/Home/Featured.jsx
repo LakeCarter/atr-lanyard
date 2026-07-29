@@ -3,6 +3,7 @@ import "./Featured.css"
 import { getAllLanyards, getFeatured } from "../../services/lanyardService.js"
 import placeholder from "../../assets/lanyardPlaceHolder.png"
 import { Link } from "react-router-dom"
+import { DisplayLanyard } from "../displayLanyard/DisplayLanyard.jsx"
 
 export const Featured = () => {
   const [featured, setFeatured] = useState([])
@@ -24,10 +25,10 @@ export const Featured = () => {
                 to={`/lanyard/${lanyard.id}`}
                 key={lanyard.id}
               >
-                <div className="lanyard-card">
+                <div className="lanyard-card --viewStandard">
                   {/* image shown is just a place holder */}
-                  <img className="lanyard-img" src={placeholder} />
                   <div className="lanyard-name">{lanyard.name}</div>
+                  <DisplayLanyard lanyard={lanyard}/>
                 </div>
               </Link>
             )

@@ -4,6 +4,7 @@ import "./ViewAll.css"
 import { getAllLanyards } from "../../services/lanyardService.js"
 import { SearchBar } from "./SearchBar.jsx"
 import { Link } from "react-router-dom"
+import { DisplayLanyard } from "../displayLanyard/DisplayLanyard.jsx"
 
 export const ViewAll = () => {
   const [allLanyards, setAllLanyards] = useState([])
@@ -40,18 +41,16 @@ export const ViewAll = () => {
       <div className="all-container">
         {filteredResults.map((lanyard) => {
           return (
+            
             <Link
               className="lanyard-link"
               to={`/lanyard/${lanyard.id}`}
               key={lanyard.id}
             >
-              <div className="lanyard-card">
+              <div className="lanyard-card --viewStandard">
                 {/* image shown is just a place holder */}
-                <img
-                  className="lanyard-img"
-                  src="src\assets\lanyardPlaceHolder.png"
-                />
-                <div className="lanyard-name">{lanyard.name}</div>
+                <h2 className="lanyard-name">{lanyard.name}</h2>
+                <DisplayLanyard lanyard={lanyard}/>
               </div>
             </Link>
           )

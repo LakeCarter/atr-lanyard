@@ -47,3 +47,38 @@ li {
 body{
     background-color: rgb(248, 235, 220);
 }
+
+.lanyard-card{
+    display: flex;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    background-color:var(--col-4);
+}
+
+.lanyard-name{
+    position:absolute;
+    align-self: flex-end;
+    color: var(--text-light);
+    background-color: rgb(28, 49, 4);
+    margin-bottom: auto;
+    padding: 10px;
+    border-radius: 0 20px 0 0px;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+}
+
+.--viewStandard{
+  width:200px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.--viewLarge{
+    width:500px;
+    height: 570px;
+    overflow: hidden;
+}

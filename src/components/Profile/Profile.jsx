@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { getUserById } from "../../services/userService.js"
 import { getLanyardsByUserId } from "../../services/lanyardService.js"
 import lanyardPlaceHolder from "../../assets/lanyardPlaceHolder.png"
+import { DisplayLanyard } from "../displayLanyard/DisplayLanyard.jsx"
 
 export const Profile = ({currentUser}) => {
   const { userId } = useParams()
@@ -45,10 +46,10 @@ export const Profile = ({currentUser}) => {
               to={`/lanyard/${lanyard.id}`}
               key={lanyard.id}
             >
-              <div className="lanyard-card">
+              <div className="lanyard-card --viewStandard">
                 {/* image shown is just a place holder */}
-                <img className="lanyard-img" src={lanyardPlaceHolder} />
                 <div className="lanyard-name">{lanyard.name}</div>
+                <DisplayLanyard lanyard={lanyard}/>
               </div>
             </Link>
           )

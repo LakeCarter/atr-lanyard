@@ -11,6 +11,7 @@ import {
   postNewLike,
   removeLike,
 } from "../../services/likeService.js"
+import { DisplayLanyard } from "../displayLanyard/DisplayLanyard.jsx"
 
 export const LanyardView = ({ currentUser }) => {
   const navigate = useNavigate()
@@ -35,18 +36,7 @@ export const LanyardView = ({ currentUser }) => {
     getAndSetLanyard()
   }, [])
 
-  //Handle like
-  const handleLike = () => {
-    if (!alreadyLiked) {
-      const likeObj = {
-        id: 0,
-        userId: currentUser.id,
-        lanyardId: lanyard.id,
-      }
-      postNewLike(likeObj).then(getAndSetLanyard())
-    } else removeLike(userLike.id).then(getAndSetLanyard())
-  }
-
+  
   //check if current user has already liked the lanyard
   useEffect(() => {
     //checks if likes is empty.
@@ -67,17 +57,30 @@ export const LanyardView = ({ currentUser }) => {
       setUserLike([])
     }
   }, [likes])
+  
+  //Handle like
+  const handleLike = () => {
+    if (!alreadyLiked) {
+      const likeObj = {
+        id: 0,
+        userId: currentUser.id,
+        lanyardId: lanyard.id,
+      }
+      postNewLike(likeObj).then(getAndSetLanyard())
+    } else removeLike(userLike.id).then(getAndSetLanyard())
+  }
 
+  //Delete Lanyard
   const handleDelete = () => {
-    deleteLanyard(lanyardId).then(navigate(`/profile/${currentUser.id}`))
+    deleteLanyard(lanyardId).then(()=>{navigate(`/profile/${currentUser.id}`)})
   }
 
   return (
     <div className="view-container">
-      <div className="lanyard-card">
+      <div className="lanyard-card --viewLarge">
         {/* Lanyard Card Place Holder */}
-        <img className="lanyard-placeholder" src={placeHolder} />
         <h2 className="lanyard-name">{lanyard.name}</h2>
+        <DisplayLanyard lanyard={lanyard} />
       </div>
       <div className="details-container">
         <Link className="profile-link" to={`/profile/${lanyard.userId}`}>

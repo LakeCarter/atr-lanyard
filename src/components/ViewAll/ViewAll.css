@@ -5,10 +5,12 @@
 }
 
 .all-container {
+  
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
   justify-content: center;
+  font-size: x-small;
 }
 
 .lanyard-link {

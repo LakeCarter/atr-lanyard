@@ -11,6 +11,7 @@ import {
 } from "../../services/lanyardService.js"
 import lanyardPreview from "../../assets/lanyardPlaceHolder.png"
 import { useNavigate, useParams } from "react-router-dom"
+import { DisplayLanyard } from "../displayLanyard/DisplayLanyard.jsx"
 
 export const EditLanyard = ({ currentUser }) => {
   const navigate = useNavigate()
@@ -78,9 +79,11 @@ export const EditLanyard = ({ currentUser }) => {
         handleSave(event)
       }}
     >
-      <div className="preview-preview">
+      <div className="preview-container">
         {/* Image that will display what is being created */}
-        <img className="lanyard-preview" src={lanyardPreview} />
+        <div className="preview-window">
+          <DisplayLanyard lanyard={editedLanyard} />
+        </div>
         <div className="create-name">
           <input
             type="text"

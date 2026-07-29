@@ -1,11 +1,15 @@
-
+.lanyard-box{
+    width:fit-content;
+    height: fit-content;
+    
+}
 
 .lanyard-part{
     position:absolute;
     width: auto;
     object-fit:fill;
-    width: 100%;         /* 4. Forces image to match parent width */
-    height: 100%;        /* 5. Forces image to match parent height */
+    width: 100%;
+    height: 100%;
 }
 
 .mask-color,
