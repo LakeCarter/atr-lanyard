@@ -1,7 +1,6 @@
 .lanyard-box{
     width:fit-content;
     height: fit-content;
-    
 }
 
 .lanyard-part{
@@ -12,8 +11,10 @@
     height: 100%;
 }
 
+
 .mask-color,
-.base-img{
+.base-img,
+.lanyard-shadow{
     position:absolute;
     top:0;
     left:0;
@@ -38,4 +39,10 @@
 .base-img{
     z-index: 2;
     mix-blend-mode:multiply;
+}
+
+.lanyard-shadow{
+    z-index: 0;
+    right: 0; 
+    transform: translateX(3px)
 }

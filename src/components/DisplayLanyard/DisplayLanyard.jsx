@@ -3,10 +3,12 @@ import bridgeBase1 from "../../assets/lanyardAssets/Base/Br base 1.png"
 import bridgeBase2 from "../../assets/lanyardAssets/Base/Br base 2.png"
 import bridgeMask1 from "../../assets/lanyardAssets/Mask/Br mask 1.png"
 import bridgeMask2 from "../../assets/lanyardAssets/Mask/Br mask 2.png"
+import bridgeShadow from "../../assets/lanyardAssets/Shadow/Br shadow.png"
 import mainDropBase1 from "../../assets/lanyardAssets/Base/Md base 1.png"
 import mainDropBase2 from "../../assets/lanyardAssets/Base/Md base 2.png"
 import mainDropMask1 from "../../assets/lanyardAssets/Mask/Md mask 1.png"
 import mainDropMask2 from "../../assets/lanyardAssets/Mask/Md mask 2.png"
+import mainDropShadow from "../../assets/lanyardAssets/Shadow/Md shadow.png"
 
 import { useEffect, useState } from "react"
 import {
@@ -150,6 +152,13 @@ export const DisplayLanyard = ({ lanyard }) => {
           />
 
           <img className="lanyard-part base-img" src={mainDropBase2} />
+        </section>
+        <section>
+          <img className="lanyard-shadow" src={primaryCords?.shadow} />
+          <img className="lanyard-shadow" src={neckCords?.shadow} />
+          <img className="lanyard-shadow" src={sideDrops?.shadow} />
+          <img className="lanyard-shadow" src={bridgeShadow} />
+          <img className="lanyard-shadow" src={mainDropShadow} />
         </section>
       </div>
     </>

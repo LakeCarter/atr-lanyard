@@ -1,6 +1,7 @@
 .viewAll {
   padding-top: 120px;
   background-color: var(--col-4);
+  min-height: 100vh;
 }
 
 .all-container {
@@ -9,8 +10,6 @@
   gap: 3rem;
   justify-content: center;
   font-size: x-small;
-
-  
 }
 
 .lanyard-link {
