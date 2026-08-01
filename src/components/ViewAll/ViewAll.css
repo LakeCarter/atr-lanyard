@@ -1,16 +1,16 @@
 .viewAll {
   padding-top: 120px;
   background-color: var(--col-4);
-  min-height: 100vh;
 }
 
 .all-container {
-  
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
   justify-content: center;
   font-size: x-small;
+
+  
 }
 
 .lanyard-link {

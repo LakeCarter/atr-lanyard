@@ -55,7 +55,9 @@ body {
   border-radius: 20px;
   box-shadow: var(--shadow);
   position: relative;
-  background-color: var(--col-4);
+  background-image: url(C:\Users\lakec\workspace\atr-lanyard\src\assets\lanyardBackground.png);
+  background-color: rgb(83, 64, 38);
+  background-size: cover;
 }
 
 .lanyard-name {
