@@ -55,6 +55,7 @@ export const EditLanyard = ({ currentUser }) => {
       sideDropColor: lanyard.sideDropColor,
       mainDropColor: lanyard.mainDropColor,
       name: lanyard.name,
+      featured: lanyard.featured
     })
   }, [lanyard])
 
@@ -74,7 +75,7 @@ export const EditLanyard = ({ currentUser }) => {
 
   return (
     <form
-      className="create"
+      className="create-form"
       onSubmit={(event) => {
         handleSave(event)
       }}
@@ -214,6 +215,21 @@ export const EditLanyard = ({ currentUser }) => {
               <input
                 type="color"
                 name="primaryCordColor2"
+                defaultValue={lanyard.primaryCordColor2}
+                onChange={(event) => {
+                  handleSelection(event)
+                }}
+              />
+            </label>
+          </div>
+          {/* Primary Cord Color 3 */}
+          <div className="option-item">
+            <label className="option-label">
+              {" "}
+              Primary Cord Color 3
+              <input
+                type="color"
+                name="primaryCordColor3"
                 defaultValue={lanyard.primaryCordColor2}
                 onChange={(event) => {
                   handleSelection(event)

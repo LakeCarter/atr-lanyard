@@ -8,6 +8,7 @@
   --col-4: #86807a;
   --col-5: #386326;
   --col-6: #4b8333;
+  --col-7: #faebd7;
 
   --text-light: #fffef6;
 
@@ -57,7 +58,7 @@ body {
   box-shadow: var(--shadow);
   position: relative;
   background-image: url(C:\Users\lakec\workspace\atr-lanyard\src\assets\lanyardBackground.png);
-  background-color: rgb(83, 64, 38);
+  background-color: rgb(145, 124, 96);
   background-size: cover;
 }
 

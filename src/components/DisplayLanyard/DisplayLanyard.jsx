@@ -48,119 +48,127 @@ export const DisplayLanyard = ({ lanyard }) => {
   }
 
   return (
-    <>
-      <div className="lanyard-box">
-        {/* main braid  */}
-        {primaryCords?.images?.map((cordImg) => {
-          return (
-            <section key={cordImg.name}>
-              <div
-                className="mask-color"
-                style={{
-                  backgroundColor: `${getColorPicker(cordImg.name)}`,
-                  WebkitMaskImage: `url("${cordImg.imgMask}")`,
-                  maskImage: `url("${cordImg.imgMask}")`,
-                }}
-              />
+    <div className="card-container">
+      <div className="card">
+        <div className="lanyard-box">
+          {/* main braid  */}
+          {primaryCords?.images?.map((cordImg) => {
+            return (
+              <section key={cordImg.name}>
+                <div
+                  className="mask-color"
+                  style={{
+                    backgroundColor: `${getColorPicker(cordImg.name)}`,
+                    WebkitMaskImage: `url("${cordImg.imgMask}")`,
+                    maskImage: `url("${cordImg.imgMask}")`,
+                  }}
+                />
 
-              <img className={`lanyard-part base-img`} src={cordImg.imgBase} />
-            </section>
-          )
-        })}
+                <img
+                  className={`lanyard-part base-img`}
+                  src={cordImg.imgBase}
+                />
+              </section>
+            )
+          })}
 
-        {/* neck braid  */}
-        {neckCords?.images?.map((cordImg) => {
-          return (
-            <section key={cordImg.name}>
-              <div
-                className="mask-color"
-                style={{
-                  backgroundColor: `${cordImg.name === "neck1" ? lanyard.neckRestColor1 : lanyard.neckRestColor2}`,
-                  WebkitMaskImage: `url("${cordImg.imgMask}")`,
-                  maskImage: `url("${cordImg.imgMask}")`,
-                }}
-              />
+          {/* neck braid  */}
+          {neckCords?.images?.map((cordImg) => {
+            return (
+              <section key={cordImg.name}>
+                <div
+                  className="mask-color"
+                  style={{
+                    backgroundColor: `${cordImg.name === "neck1" ? lanyard.neckRestColor1 : lanyard.neckRestColor2}`,
+                    WebkitMaskImage: `url("${cordImg.imgMask}")`,
+                    maskImage: `url("${cordImg.imgMask}")`,
+                  }}
+                />
 
-              <img className={`lanyard-part base-img`} src={cordImg.imgBase} />
-            </section>
-          )
-        })}
+                <img
+                  className={`lanyard-part base-img`}
+                  src={cordImg.imgBase}
+                />
+              </section>
+            )
+          })}
 
-        {/* side drops  */}
-        <section key={sideDrops?.id}>
-          <div
-            className="mask-color"
-            style={{
-              backgroundColor: `${lanyard.sideDropColor}`,
-              WebkitMaskImage: `url("${sideDrops?.imgMask}")`,
-              maskImage: `url("${sideDrops?.imgMask}")`,
-            }}
-          />
+          {/* side drops  */}
+          <section key={sideDrops?.id}>
+            <div
+              className="mask-color"
+              style={{
+                backgroundColor: `${lanyard.sideDropColor}`,
+                WebkitMaskImage: `url("${sideDrops?.imgMask}")`,
+                maskImage: `url("${sideDrops?.imgMask}")`,
+              }}
+            />
 
-          <img className="lanyard-part base-img" src={sideDrops?.imgBase} />
-        </section>
+            <img className="lanyard-part base-img" src={sideDrops?.imgBase} />
+          </section>
 
-        {/* Bridge  */}
-        <section key={"bridge1"}>
-          <div
-            className="mask-color"
-            style={{
-              backgroundColor: `${lanyard.bridgeBraidColor1}`,
-              WebkitMaskImage: `url("${bridgeMask1}")`,
-              maskImage: `url("${bridgeMask1}")`,
-            }}
-          />
+          {/* Bridge  */}
+          <section key={"bridge1"}>
+            <div
+              className="mask-color"
+              style={{
+                backgroundColor: `${lanyard.bridgeBraidColor1}`,
+                WebkitMaskImage: `url("${bridgeMask1}")`,
+                maskImage: `url("${bridgeMask1}")`,
+              }}
+            />
 
-          <img className="lanyard-part base-img" src={bridgeBase1} />
-        </section>
+            <img className="lanyard-part base-img" src={bridgeBase1} />
+          </section>
 
-        <section key={"bridge2"}>
-          <div
-            className="mask-color"
-            style={{
-              backgroundColor: `${lanyard.bridgeBraidColor2}`,
-              WebkitMaskImage: `url("${bridgeMask2}")`,
-              maskImage: `url("${bridgeMask2}")`,
-            }}
-          />
+          <section key={"bridge2"}>
+            <div
+              className="mask-color"
+              style={{
+                backgroundColor: `${lanyard.bridgeBraidColor2}`,
+                WebkitMaskImage: `url("${bridgeMask2}")`,
+                maskImage: `url("${bridgeMask2}")`,
+              }}
+            />
 
-          <img className="lanyard-part base-img" src={bridgeBase2} />
-        </section>
+            <img className="lanyard-part base-img" src={bridgeBase2} />
+          </section>
 
-        {/* Main drops */}
-        <section key={"mainDrop1"}>
-          <div
-            className="mask-color"
-            style={{
-              backgroundColor: `${lanyard.mainDropColor}`,
-              WebkitMaskImage: `url("${mainDropMask1}")`,
-              maskImage: `url("${mainDropMask1}")`,
-            }}
-          />
+          {/* Main drops */}
+          <section key={"mainDrop1"}>
+            <div
+              className="mask-color"
+              style={{
+                backgroundColor: `${lanyard.mainDropColor}`,
+                WebkitMaskImage: `url("${mainDropMask1}")`,
+                maskImage: `url("${mainDropMask1}")`,
+              }}
+            />
 
-          <img className="lanyard-part base-img" src={mainDropBase1} />
-        </section>
+            <img className="lanyard-part base-img" src={mainDropBase1} />
+          </section>
 
-        <section key={"mainDrop2"}>
-          <div
-            className="mask-color"
-            style={{
-              backgroundColor: `${lanyard.mainDropColor}`,
-              WebkitMaskImage: `url("${mainDropMask2}")`,
-              maskImage: `url("${mainDropMask2}")`,
-            }}
-          />
+          <section key={"mainDrop2"}>
+            <div
+              className="mask-color"
+              style={{
+                backgroundColor: `${lanyard.mainDropColor}`,
+                WebkitMaskImage: `url("${mainDropMask2}")`,
+                maskImage: `url("${mainDropMask2}")`,
+              }}
+            />
 
-          <img className="lanyard-part base-img" src={mainDropBase2} />
-        </section>
-        <section>
-          <img className="lanyard-shadow" src={primaryCords?.shadow} />
-          <img className="lanyard-shadow" src={neckCords?.shadow} />
-          <img className="lanyard-shadow" src={sideDrops?.shadow} />
-          <img className="lanyard-shadow" src={bridgeShadow} />
-          <img className="lanyard-shadow" src={mainDropShadow} />
-        </section>
+            <img className="lanyard-part base-img" src={mainDropBase2} />
+          </section>
+          <section>
+            <img className="lanyard-shadow" src={primaryCords?.shadow} />
+            <img className="lanyard-shadow" src={neckCords?.shadow} />
+            <img className="lanyard-shadow" src={sideDrops?.shadow} />
+            <img className="lanyard-shadow" src={bridgeShadow} />
+            <img className="lanyard-shadow" src={mainDropShadow} />
+          </section>
+        </div>
       </div>
-    </>
+    </div>
   )
 }

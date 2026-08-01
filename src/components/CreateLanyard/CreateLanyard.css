@@ -1,74 +1,91 @@
-.create{
-    padding-top: 120px;
-    display: flex;
-    gap: 200px;
-    justify-content: center;
+.create-form {
+  padding-top: 120px;
+  display: flex;
+  gap: 200px;
+  justify-content: center;
+  background-color: var(--col-2);
+  min-height: 100vh;
 }
 
-.options-list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 4px double var(--col-1);
-    padding: 50px;
-    padding-right: 5px;
-    gap: 10px;
-    background-color: var(--col-4);
+.options-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 4px double var(--col-1);
+  padding: 50px;
+  padding-right: 5px;
+  gap: 10px;
+  background-color: var(--col-4);
+  box-shadow: var(--shadow);
+  max-height: fit-content;
+  position: relative;
 }
 
-.create-name{
-    justify-self: center;
+.create-name {
+  justify-self: center;
 }
 
-.name-input{
-    border-radius: 3px;
-    border: 4px double black;
-    font-size: large;
+.name-input {
+  border-radius: 3px;
+  border: 4px double black;
+  font-size: large;
 }
 
-.option-item{
-    background-color:antiquewhite;
-    font-size: large;
-    padding: 8px;
+.option-item {
+  background-color: #faebd7;
+  font-size: large;
+  padding: 8px;
 }
 
-.option-label{
- display: flex;
- flex-direction: column;
- align-items: center;
+.option-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.option-dropDown{
-    font-size: medium;
+.option-dropDown {
+  font-size: medium;
 }
 
-.option-checkbox{
-    width: 20px;
-    height: 20px;
+.option-checkbox {
+  width: 20px;
+  height: 20px;
 }
 
-.lanyard-preview{
-    max-width: 350px;
-    border: 4px solid black;
-    padding: 20px;
-    border-radius: 20px;
+.lanyard-preview {
+  max-width: 350px;
+  border: 4px solid black;
+  padding: 20px;
+  border-radius: 20px;
 }
 
-.save-btn{
-    border-radius: 20px;
-    font-size: large;
-    margin-top: 5px;
+.save-btn {
+  border-radius: 20px;
+  font-size: large;
+  margin-top: 5px;
 }
 
-.preview-container{
-    margin-right: 50px;
-    margin-left: 70px;
+.preview-container {
+  margin-right: 50px;
+  margin-left: 70px;
+  position: relative;
 }
 
-.preview-window{
-    width: 550px;
-    height: 600px;
-    position: relative;
-    background-color: rgb(225, 214, 195);
-    border: 5px double var(--col-4);
+.preview-window {
+  width: 550px;
+  height: 600px;
+  position: relative;
+  background-color: rgb(225, 214, 195);
+  border: 5px double var(--col-4);
+  box-shadow: var(--shadow);
+}
+
+.background-ducks {
+  position: absolute;
+  width: 1300px;
+  z-index: 0;
+  opacity: 0.3;
+  left: 0;
+  bottom: 0;
+  transform: translateY(150px);
 }

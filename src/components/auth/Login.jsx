@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { getUserByEmail } from "../../services/userService"
 import logo from "../../assets/atrLogo.png"
+import grassL from "../../assets/grassL.png"
+import grassR from "../../assets/grassR.png"
 
 export const Login = () => {
   const [email, set] = useState("")
@@ -57,6 +59,10 @@ export const Login = () => {
       <section className="register-link">
         <Link to="/register">Not a member yet?</Link>
       </section>
+      <div className="grass-imgs">
+        <img className="grass grassL" src={grassL}/>
+        <img className="grass grassR" src={grassR}/>
+      </div>
     </main>
   )
 }

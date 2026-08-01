@@ -1,7 +1,7 @@
 .auth-container {
   border: 1px solid gray;
   margin: 3rem 15rem;
-  padding: 2rem;
+  padding: 0;
   border-radius: 1rem;
 }
 
@@ -25,4 +25,19 @@
 
 .auth-fieldset {
   margin: 0.25rem 0rem;
+}
+
+.grass-imgs{
+  display: flex;
+}
+.grass{
+height: 250px;
+}
+
+.grassL{
+  margin-right: auto;
+}
+
+.grassR{
+  margin-left: auto;
 }

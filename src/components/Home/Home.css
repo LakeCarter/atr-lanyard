@@ -19,7 +19,6 @@
   align-self: center;
   position: fixed;
   width: 100%;
-  overflow: hidden;
 }
 
 .backgroundPic {
@@ -84,11 +83,28 @@
   color: var(--text-light);
 }
 
+.quote-container{
+background-color: var(--col-2);
+display: flex;
+align-items: center;
+}
+
 .home-quote {
-  background-color: var(--col-2);
   padding: 70px;
   text-align: center;
   color: var(--text-light);
+}
+
+.grass{
+  height: 250px;
+}
+
+.gRight{
+  margin-left: auto;
+}
+
+.gLeft{
+  margin-right: auto;
 }
 
 .home-Logo {
